@@ -1,0 +1,23 @@
+Output: Gerber X2 Files
+Type  : GerberX2
+From  : Variant [[No Variations]] of Project [HumFlex2.PrjPcb]
+   Generated File[HumFlex2_1_Copper_Signal_Top.gbr]
+   Generated File[HumFlex2_1_Copper_Signal_Bot.gbr]
+   Generated File[HumFlex2_1_Legend_Top.gbr]
+   Generated File[HumFlex2_1_Legend_Bot.gbr]
+   Generated File[HumFlex2_1_Soldermask_Top.gbr]
+   Generated File[HumFlex2_1_Soldermask_Bot.gbr]
+   Generated File[HumFlex2_1_Paste_Top.gbr]
+   Generated File[HumFlex2_1_Paste_Bot.gbr]
+   Generated File[HumFlex2_1_Stiffener.gbr]
+   Generated File[HumFlex2_1_Profile.gbr]
+   Generated File[HumFlex2_1_NPTH_Drill.gbr]
+   Generated File[HumFlex2_1_PTH_Drill.gbr]
+   Generated File[HumFlex2_1.EXTREP]
+   Generated File[HumFlex2_1.REP]
+
+
+Files Generated   : 14
+Documents Printed : 0
+
+Finished Output Generation At 12:51:39 On 31.10.2023

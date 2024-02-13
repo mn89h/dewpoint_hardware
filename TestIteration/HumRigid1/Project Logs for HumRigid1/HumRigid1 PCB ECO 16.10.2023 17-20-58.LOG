@@ -1,0 +1,4 @@
+Added Pin To Net: NetName=EN_1 Pin=J1-9
+Added Pin To Net: NetName=EN_2 Pin=J2-9
+Added Pin To Net: NetName=NetD4_2 Pin=J4-2
+Change Net Color : Old Net Color=RGB(158, 161, 117) New Net Color=Default

@@ -1,0 +1,33 @@
+Added Pin To Net: NetName=NetD3_2 Pin=J4-2
+Added Pin To Net: NetName=ADD1_1 Pin=J1-5
+Added Net: Name=ADD1_1
+Added Pin To Net: NetName=ADD1_2 Pin=J2-5
+Added Net: Name=ADD1_2
+Added Pin To Net: NetName=CT_1 Pin=J1-11
+Added Net: Name=CT_1
+Added Pin To Net: NetName=CT_2 Pin=J2-11
+Added Net: Name=CT_2
+Added Net: Name=EN_1
+Added Net: Name=EN_2
+Added Pin To Net: NetName=GND_Flex Pin=J1-15
+Added Pin To Net: NetName=GND_Flex Pin=J2-15
+Added Net: Name=GND_Flex
+Added Pin To Net: NetName=INT_1 Pin=J1-13
+Added Net: Name=INT_1
+Added Pin To Net: NetName=INT_2 Pin=J2-13
+Added Net: Name=INT_2
+Added Pin To Net: NetName=SCL_1 Pin=J1-3
+Added Net: Name=SCL_1
+Added Pin To Net: NetName=SCL_2 Pin=J2-3
+Added Net: Name=SCL_2
+Added Pin To Net: NetName=SDA_1 Pin=J1-1
+Added Net: Name=SDA_1
+Added Pin To Net: NetName=SDA_2 Pin=J2-1
+Added Net: Name=SDA_2
+Added Pin To Net: NetName=VIN_Flex Pin=J1-6
+Added Pin To Net: NetName=VIN_Flex Pin=J1-7
+Added Pin To Net: NetName=VIN_Flex Pin=J1-8
+Added Pin To Net: NetName=VIN_Flex Pin=J2-6
+Added Pin To Net: NetName=VIN_Flex Pin=J2-7
+Added Pin To Net: NetName=VIN_Flex Pin=J2-8
+Added Net: Name=VIN_Flex

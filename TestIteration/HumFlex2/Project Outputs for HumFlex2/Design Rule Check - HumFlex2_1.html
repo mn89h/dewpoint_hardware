@@ -1,0 +1,517 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Malte\Documents\Altium\AD23\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">31.10.2023</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">12:50:31</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:05</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc" class="file"><acronym title="C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc">C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">51</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">4</td></tr>
+</table>
+</td>
+</table><a name="ID3UL2YKOTUERPJNFGSNZFLPD14KNMKXPXTANTPXNX3WLKXJMFKLSF"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDQKGF5P4YRU23C5YEPBNX1A5YONA4LNTXMPJDABK3IOKX2OU0ADFB">Zero hole size multi-layer pad(s) detected</a></td>
+<td class="column2">21</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDO3AGGFN1L5XLCW0HZBGIZ0ZX3FOXNL0QMMVMKOME241VLGDVVWHD">Multilayer Pads with 0 size Hole found</a></td>
+<td class="column2">30</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">51</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDFWCBSDF5LX2RGQKVMXFEPLNO3FTFEE0FSMPU21ERTHRJ4FNY22EB">Clearance Constraint (Gap=0.08mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZU2EYGMTAF5KM2RBLNCTPYFERDE11JJXJCDJ1JNSC2CK5VAEDJUK">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDRFHQ0Y1XYUQ4LV044RES1OPY2HYWUV4CEWCWHYDV1PW2F3BIUGYH">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAFABVJJDKAVGGUFYMWB2JZNQ0EVFSGXU5GIO5BGVWLTGSMKBUHWG">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDA0FJNU02R5KBNOGDYFHMJMCBIF5GROPEGI4FMAKF1FL0VXS2VX1J">Width Constraint (Min=0.08mm) (Max=8mm) (Preferred=0.2mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDRL1Z22OS5VLVKQMGRBVWFJ1SPLJDLKIGQT1J4OFBM3IGXNJT5">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDRHBMCXZD53PXGCV1OFL1AMB50L4RU5EB2UZYLUDXTQYLAI2UJJLC">Minimum Annular Ring (Minimum=0.1mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4RL3US2M32BWMU5ZVAU1DSD5BN2S1IHIPEHLOUJPOVYZ1GDPQ4OD">Hole Size Constraint (Min=0.2mm) (Max=6mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDBEWDGYMJEUUNIRUPNO1D15USABLQB5SDW3CLHWLYZ5JMOZ5ZCN4G">Hole To Hole Clearance (Gap=0.3mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDCPG0IUQ0AQN4MTCL12HU4NVHAOJNGKZT3KMLMWK2ZFCDELBFSNZO">Minimum Solder Mask Sliver (Gap=0mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMITOCIYNIQ1GPFISFGLIQLJZRPFQ2ON4IM53I1BZOX1XQM34XOAM">Minimum Solder Mask Sliver (Gap=0mm) (HasFootprint('PeltierElement')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID2ITAKOX2GZ30NJM1ZBUAAUTGFFGKTCRBQ4PCPCOL0YZRQZC1UJVF">Silk To Solder Mask (Clearance=0.15mm) (IsPad),(All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDY1KVSJRJCBVLKKEUULDE5R1YNKZFSDAIG3S2FJNJUMKXSYGZ0V4F">Silk to Silk (Clearance=0.15mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID1UWWR4W4BCW5NTUTCSXLVRFLAE5BEF4ZHFC2H4IMTJYFDENMCSM">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID0KMARZKID5QSH5AR4D44KHIMHKXE2LRZHSQ2MBFHHSVEPNXGAOVM">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">4</td>
+</tr>
+</table><br><a name="IDRHJW2MCW2335E2WGPNMPPXU5KE0UNNCT50RADCIU5KPYLVIIADGL"><h2>Warnings</h2></a><a name="IDQKGF5P4YRU23C5YEPBNX1A5YONA4LNTXMPJDABK3IOKX2OU0ADFB"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="warning">Zero hole size multi-layer pad(s) detected</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3381.89mil|Location2.X=3401.575mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3381.89mil|Location2.X=3401.575mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-1(42.65mm,53.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1258.858mil|Location2.X=3401.575mil|Location1.Y=1137.534mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1258.858mil|Location2.X=3401.575mil|Location1.Y=1137.534mil|Location2.Y=4131.89mil|Absolute=True">Net NetJ2_1</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3393.701mil|Location2.X=3413.386mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3393.701mil|Location2.X=3413.386mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-2(42.95mm,53.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1994.094mil|Location2.X=3413.386mil|Location1.Y=1139.764mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1994.094mil|Location2.X=3413.386mil|Location1.Y=1139.764mil|Location2.Y=4131.89mil|Absolute=True">Net NetJ2_2</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3405.512mil|Location2.X=3425.197mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3405.512mil|Location2.X=3425.197mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-3(43.25mm,53.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1258.858mil|Location2.X=3425.197mil|Location1.Y=1121.786mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1258.858mil|Location2.X=3425.197mil|Location1.Y=1121.786mil|Location2.Y=4131.89mil|Absolute=True">Net NetJ2_3</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3429.134mil|Location2.X=3448.819mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3429.134mil|Location2.X=3448.819mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-5(43.85mm,53.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1924.229mil|Location2.X=3448.819mil|Location1.Y=1106.038mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1924.229mil|Location2.X=3448.819mil|Location1.Y=1106.038mil|Location2.Y=4131.89mil|Absolute=True">Net NetJ2_5</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3452.756mil|Location2.X=3472.441mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3452.756mil|Location2.X=3472.441mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-7(44.45mm,53.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2020.489mil|Location2.X=3484.252mil|Location1.Y=1068.518mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2020.489mil|Location2.X=3484.252mil|Location1.Y=1068.518mil|Location2.Y=4131.89mil|Absolute=True">Net NetC10_2</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3440.945mil|Location2.X=3460.63mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3440.945mil|Location2.X=3460.63mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-6(44.15mm,53.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2020.489mil|Location2.X=3484.252mil|Location1.Y=1068.518mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2020.489mil|Location2.X=3484.252mil|Location1.Y=1068.518mil|Location2.Y=4131.89mil|Absolute=True">Net NetC10_2</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3464.567mil|Location2.X=3484.252mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3464.567mil|Location2.X=3484.252mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-8(44.75mm,53.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2020.489mil|Location2.X=3484.252mil|Location1.Y=1068.518mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2020.489mil|Location2.X=3484.252mil|Location1.Y=1068.518mil|Location2.Y=4131.89mil|Absolute=True">Net NetC10_2</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3476.378mil|Location2.X=3496.063mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3476.378mil|Location2.X=3496.063mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-9(45.05mm,53.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2020.489mil|Location2.X=3496.063mil|Location1.Y=1058.793mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2020.489mil|Location2.X=3496.063mil|Location1.Y=1058.793mil|Location2.Y=4131.89mil|Absolute=True">Net NetJ2_9</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3500mil|Location2.X=3519.685mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3500mil|Location2.X=3519.685mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-11(45.65mm,53.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1689.19mil|Location2.X=3519.685mil|Location1.Y=983.99mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1689.19mil|Location2.X=3519.685mil|Location1.Y=983.99mil|Location2.Y=4131.89mil|Absolute=True">Net NetJ2_11</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3523.622mil|Location2.X=3543.307mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3523.622mil|Location2.X=3543.307mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-13(46.25mm,53.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1677.379mil|Location2.X=3543.307mil|Location1.Y=964.305mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1677.379mil|Location2.X=3543.307mil|Location1.Y=964.305mil|Location2.Y=4131.89mil|Absolute=True">Net NetJ2_13</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3547.244mil|Location2.X=3566.929mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3547.244mil|Location2.X=3566.929mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-15(46.85mm,53.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=251.969mil|Location2.X=3566.929mil|Location1.Y=198.819mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=251.969mil|Location2.X=3566.929mil|Location1.Y=198.819mil|Location2.Y=4131.89mil|Absolute=True">Net GND</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=417.323mil|Location2.X=437.008mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=417.323mil|Location2.X=437.008mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-1(-32.65mm,-43.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=417.323mil|Location2.X=2040.354mil|Location1.Y=198.819mil|Location2.Y=3191.732mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=417.323mil|Location2.X=2040.354mil|Location1.Y=198.819mil|Location2.Y=3191.732mil|Absolute=True">Net NetJ1_1</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=393.701mil|Location2.X=413.386mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=393.701mil|Location2.X=413.386mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-3(-33.25mm,-43.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=393.701mil|Location2.X=2014.764mil|Location1.Y=198.819mil|Location2.Y=3207.48mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=393.701mil|Location2.X=2014.764mil|Location1.Y=198.819mil|Location2.Y=3207.48mil|Absolute=True">Net NetJ1_3</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=370.079mil|Location2.X=389.764mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=370.079mil|Location2.X=389.764mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-5(-33.85mm,-43.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=370.079mil|Location2.X=1893.701mil|Location1.Y=198.819mil|Location2.Y=3223.228mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=370.079mil|Location2.X=1893.701mil|Location1.Y=198.819mil|Location2.Y=3223.228mil|Absolute=True">Net NetJ1_5</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=346.457mil|Location2.X=366.142mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=346.457mil|Location2.X=366.142mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-7(-34.45mm,-43.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=334.646mil|Location2.X=1797.441mil|Location1.Y=198.819mil|Location2.Y=3260.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=334.646mil|Location2.X=1797.441mil|Location1.Y=198.819mil|Location2.Y=3260.748mil|Absolute=True">Net NetC5_2</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=358.268mil|Location2.X=377.953mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=358.268mil|Location2.X=377.953mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-6(-34.15mm,-43.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=334.646mil|Location2.X=1797.441mil|Location1.Y=198.819mil|Location2.Y=3260.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=334.646mil|Location2.X=1797.441mil|Location1.Y=198.819mil|Location2.Y=3260.748mil|Absolute=True">Net NetC5_2</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=334.646mil|Location2.X=354.331mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=334.646mil|Location2.X=354.331mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-8(-34.75mm,-43.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=334.646mil|Location2.X=1797.441mil|Location1.Y=198.819mil|Location2.Y=3260.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=334.646mil|Location2.X=1797.441mil|Location1.Y=198.819mil|Location2.Y=3260.748mil|Absolute=True">Net NetC5_2</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=322.834mil|Location2.X=342.519mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=322.834mil|Location2.X=342.519mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-9(-35.05mm,-43.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=322.834mil|Location2.X=1797.441mil|Location1.Y=198.819mil|Location2.Y=3270.472mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=322.834mil|Location2.X=1797.441mil|Location1.Y=198.819mil|Location2.Y=3270.472mil|Absolute=True">Net NetJ1_9</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=299.212mil|Location2.X=318.897mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=299.212mil|Location2.X=318.897mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-11(-35.65mm,-43.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=299.212mil|Location2.X=2128.74mil|Location1.Y=198.819mil|Location2.Y=3345.276mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=299.212mil|Location2.X=2128.74mil|Location1.Y=198.819mil|Location2.Y=3345.276mil|Absolute=True">Net NetJ1_11</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=275.59mil|Location2.X=295.275mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=275.59mil|Location2.X=295.275mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-13(-36.25mm,-43.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=275.59mil|Location2.X=2140.551mil|Location1.Y=198.819mil|Location2.Y=3364.961mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=275.59mil|Location2.X=2140.551mil|Location1.Y=198.819mil|Location2.Y=3364.961mil|Absolute=True">Net NetJ1_13</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=251.969mil|Location2.X=271.654mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=251.969mil|Location2.X=271.654mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-15(-36.85mm,-43.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=251.969mil|Location2.X=3566.929mil|Location1.Y=198.819mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=251.969mil|Location2.X=3566.929mil|Location1.Y=198.819mil|Location2.Y=4131.89mil|Absolute=True">Net GND</acronym></a></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDO3AGGFN1L5XLCW0HZBGIZ0ZX3FOXNL0QMMVMKOME241VLGDVVWHD"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="warning">Multilayer Pads with 0 size Hole found</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3381.89mil|Location2.X=3401.575mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3381.89mil|Location2.X=3401.575mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-1(42.65mm,53.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3393.701mil|Location2.X=3413.386mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3393.701mil|Location2.X=3413.386mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-2(42.95mm,53.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3405.512mil|Location2.X=3425.197mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3405.512mil|Location2.X=3425.197mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-3(43.25mm,53.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3417.323mil|Location2.X=3437.008mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3417.323mil|Location2.X=3437.008mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-4(43.55mm,53.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3429.134mil|Location2.X=3448.819mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3429.134mil|Location2.X=3448.819mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-5(43.85mm,53.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3452.756mil|Location2.X=3472.441mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3452.756mil|Location2.X=3472.441mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-7(44.45mm,53.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3440.945mil|Location2.X=3460.63mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3440.945mil|Location2.X=3460.63mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-6(44.15mm,53.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3464.567mil|Location2.X=3484.252mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3464.567mil|Location2.X=3484.252mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-8(44.75mm,53.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3476.378mil|Location2.X=3496.063mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3476.378mil|Location2.X=3496.063mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-9(45.05mm,53.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3488.189mil|Location2.X=3507.874mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3488.189mil|Location2.X=3507.874mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-10(45.35mm,53.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3500mil|Location2.X=3519.685mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3500mil|Location2.X=3519.685mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-11(45.65mm,53.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3511.811mil|Location2.X=3531.496mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3511.811mil|Location2.X=3531.496mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-12(45.95mm,53.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3523.622mil|Location2.X=3543.307mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3523.622mil|Location2.X=3543.307mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-13(46.25mm,53.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3535.433mil|Location2.X=3555.118mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3535.433mil|Location2.X=3555.118mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-14(46.55mm,53.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3547.244mil|Location2.X=3566.929mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3547.244mil|Location2.X=3566.929mil|Location1.Y=4045.276mil|Location2.Y=4131.89mil|Absolute=True">Pad J2-15(46.85mm,53.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=417.323mil|Location2.X=437.008mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=417.323mil|Location2.X=437.008mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-1(-32.65mm,-43.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=405.512mil|Location2.X=425.197mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=405.512mil|Location2.X=425.197mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-2(-32.95mm,-43.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=393.701mil|Location2.X=413.386mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=393.701mil|Location2.X=413.386mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-3(-33.25mm,-43.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=381.89mil|Location2.X=401.575mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=381.89mil|Location2.X=401.575mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-4(-33.55mm,-43.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=370.079mil|Location2.X=389.764mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=370.079mil|Location2.X=389.764mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-5(-33.85mm,-43.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=346.457mil|Location2.X=366.142mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=346.457mil|Location2.X=366.142mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-7(-34.45mm,-43.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=358.268mil|Location2.X=377.953mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=358.268mil|Location2.X=377.953mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-6(-34.15mm,-43.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=334.646mil|Location2.X=354.331mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=334.646mil|Location2.X=354.331mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-8(-34.75mm,-43.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=322.834mil|Location2.X=342.519mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=322.834mil|Location2.X=342.519mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-9(-35.05mm,-43.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=311.024mil|Location2.X=330.709mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=311.024mil|Location2.X=330.709mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-10(-35.35mm,-43.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=299.212mil|Location2.X=318.897mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=299.212mil|Location2.X=318.897mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-11(-35.65mm,-43.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=287.401mil|Location2.X=307.087mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=287.401mil|Location2.X=307.087mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-12(-35.95mm,-43.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=275.59mil|Location2.X=295.275mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=275.59mil|Location2.X=295.275mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-13(-36.25mm,-43.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=263.779mil|Location2.X=283.464mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=263.779mil|Location2.X=283.464mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-14(-36.55mm,-43.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=251.969mil|Location2.X=271.654mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=251.969mil|Location2.X=271.654mil|Location1.Y=198.819mil|Location2.Y=285.433mil|Absolute=True">Pad J1-15(-36.85mm,-43.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID2ITAKOX2GZ30NJM1ZBUAAUTGFFGKTCRBQ4PCPCOL0YZRQZC1UJVF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.15mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2110.595mil|Location2.X=2117.751mil|Location1.Y=1726.735mil|Location2.Y=1733.89mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2110.595mil|Location2.X=2117.751mil|Location1.Y=1726.735mil|Location2.Y=1733.89mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.1mm &lt; 0.15mm) Between Arc (10.2mm,-6.2mm) on Top Overlay And Pad M1-1(5mm,5mm) on Top Layer [Top Overlay] to [Board Layer Stack Top Coverlay] clearance [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1949.216mil|Location2.X=1954.153mil|Location1.Y=1318.398mil|Location2.Y=1323.335mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1949.216mil|Location2.X=1954.153mil|Location1.Y=1318.398mil|Location2.Y=1323.335mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.15mm) Between Pad R11-2(6.346mm,-16.9mm) on Top Layer And Text "C8" (4.673mm,-14.493mm) on Top Overlay [Top Overlay] to [Board Layer Stack Top Coverlay] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1970.164mil|Location2.X=1977.319mil|Location1.Y=1279.43mil|Location2.Y=1286.585mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1970.164mil|Location2.X=1977.319mil|Location1.Y=1279.43mil|Location2.Y=1286.585mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.123mm &lt; 0.15mm) Between Pad R11-2(6.346mm,-16.9mm) on Top Layer And Text "U7" (6.866mm,-17.6mm) on Top Overlay [Top Overlay] to [Board Layer Stack Top Coverlay] clearance [0.123mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2118.166mil|Location2.X=2126.111mil|Location1.Y=1302.941mil|Location2.Y=1311.162mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2118.166mil|Location2.X=2126.111mil|Location1.Y=1302.941mil|Location2.Y=1311.162mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.086mm &lt; 0.15mm) Between Pad R7-1(10.875mm,-16.41mm) on Top Layer And Text "R11" (8.738mm,-13.85mm) on Top Overlay [Top Overlay] to [Board Layer Stack Top Coverlay] clearance [0.086mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

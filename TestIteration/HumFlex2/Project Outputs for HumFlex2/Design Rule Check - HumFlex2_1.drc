@@ -1,0 +1,113 @@
+Protel Design System Design Rule Check
+PCB File : C:\Users\Public\Documents\Altium\HumFlex2\HumFlex2_1.PcbDoc
+Date     : 31.10.2023
+Time     : 12:50:31
+
+WARNING: Zero hole size multi-layer pad(s) detected
+   Pad J2-1(42.65mm,53.85mm) on Multi-Layer on Net NetJ2_1
+   Pad J2-2(42.95mm,53.85mm) on Multi-Layer on Net NetJ2_2
+   Pad J2-3(43.25mm,53.85mm) on Multi-Layer on Net NetJ2_3
+   Pad J2-5(43.85mm,53.85mm) on Multi-Layer on Net NetJ2_5
+   Pad J2-7(44.45mm,53.85mm) on Multi-Layer on Net NetC10_2
+   Pad J2-6(44.15mm,53.85mm) on Multi-Layer on Net NetC10_2
+   Pad J2-8(44.75mm,53.85mm) on Multi-Layer on Net NetC10_2
+   Pad J2-9(45.05mm,53.85mm) on Multi-Layer on Net NetJ2_9
+   Pad J2-11(45.65mm,53.85mm) on Multi-Layer on Net NetJ2_11
+   Pad J2-13(46.25mm,53.85mm) on Multi-Layer on Net NetJ2_13
+   Pad J2-15(46.85mm,53.85mm) on Multi-Layer on Net GND
+   Pad J1-1(-32.65mm,-43.85mm) on Multi-Layer on Net NetJ1_1
+   Pad J1-3(-33.25mm,-43.85mm) on Multi-Layer on Net NetJ1_3
+   Pad J1-5(-33.85mm,-43.85mm) on Multi-Layer on Net NetJ1_5
+   Pad J1-7(-34.45mm,-43.85mm) on Multi-Layer on Net NetC5_2
+   Pad J1-6(-34.15mm,-43.85mm) on Multi-Layer on Net NetC5_2
+   Pad J1-8(-34.75mm,-43.85mm) on Multi-Layer on Net NetC5_2
+   Pad J1-9(-35.05mm,-43.85mm) on Multi-Layer on Net NetJ1_9
+   Pad J1-11(-35.65mm,-43.85mm) on Multi-Layer on Net NetJ1_11
+   Pad J1-13(-36.25mm,-43.85mm) on Multi-Layer on Net NetJ1_13
+   Pad J1-15(-36.85mm,-43.85mm) on Multi-Layer on Net GND
+
+WARNING: Multilayer Pads with 0 size Hole found
+   Pad J2-1(42.65mm,53.85mm) on Multi-Layer
+   Pad J2-2(42.95mm,53.85mm) on Multi-Layer
+   Pad J2-3(43.25mm,53.85mm) on Multi-Layer
+   Pad J2-4(43.55mm,53.85mm) on Multi-Layer
+   Pad J2-5(43.85mm,53.85mm) on Multi-Layer
+   Pad J2-7(44.45mm,53.85mm) on Multi-Layer
+   Pad J2-6(44.15mm,53.85mm) on Multi-Layer
+   Pad J2-8(44.75mm,53.85mm) on Multi-Layer
+   Pad J2-9(45.05mm,53.85mm) on Multi-Layer
+   Pad J2-10(45.35mm,53.85mm) on Multi-Layer
+   Pad J2-11(45.65mm,53.85mm) on Multi-Layer
+   Pad J2-12(45.95mm,53.85mm) on Multi-Layer
+   Pad J2-13(46.25mm,53.85mm) on Multi-Layer
+   Pad J2-14(46.55mm,53.85mm) on Multi-Layer
+   Pad J2-15(46.85mm,53.85mm) on Multi-Layer
+   Pad J1-1(-32.65mm,-43.85mm) on Multi-Layer
+   Pad J1-2(-32.95mm,-43.85mm) on Multi-Layer
+   Pad J1-3(-33.25mm,-43.85mm) on Multi-Layer
+   Pad J1-4(-33.55mm,-43.85mm) on Multi-Layer
+   Pad J1-5(-33.85mm,-43.85mm) on Multi-Layer
+   Pad J1-7(-34.45mm,-43.85mm) on Multi-Layer
+   Pad J1-6(-34.15mm,-43.85mm) on Multi-Layer
+   Pad J1-8(-34.75mm,-43.85mm) on Multi-Layer
+   Pad J1-9(-35.05mm,-43.85mm) on Multi-Layer
+   Pad J1-10(-35.35mm,-43.85mm) on Multi-Layer
+   Pad J1-11(-35.65mm,-43.85mm) on Multi-Layer
+   Pad J1-12(-35.95mm,-43.85mm) on Multi-Layer
+   Pad J1-13(-36.25mm,-43.85mm) on Multi-Layer
+   Pad J1-14(-36.55mm,-43.85mm) on Multi-Layer
+   Pad J1-15(-36.85mm,-43.85mm) on Multi-Layer
+
+Processing Rule : Clearance Constraint (Gap=0.08mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.08mm) (Max=8mm) (Preferred=0.2mm) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Minimum Annular Ring (Minimum=0.1mm) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.2mm) (Max=6mm) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=0.3mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=0mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=0mm) (HasFootprint('PeltierElement')),(All)
+Rule Violations :0
+
+Processing Rule : Silk To Solder Mask (Clearance=0.15mm) (IsPad),(All)
+   Violation between Silk To Solder Mask Clearance Constraint: (0.1mm < 0.15mm) Between Arc (10.2mm,-6.2mm) on Top Overlay And Pad M1-1(5mm,5mm) on Top Layer [Top Overlay] to [Board Layer Stack Top Coverlay] clearance [0.1mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.15mm) Between Pad R11-2(6.346mm,-16.9mm) on Top Layer And Text "C8" (4.673mm,-14.493mm) on Top Overlay [Top Overlay] to [Board Layer Stack Top Coverlay] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.123mm < 0.15mm) Between Pad R11-2(6.346mm,-16.9mm) on Top Layer And Text "U7" (6.866mm,-17.6mm) on Top Overlay [Top Overlay] to [Board Layer Stack Top Coverlay] clearance [0.123mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.086mm < 0.15mm) Between Pad R7-1(10.875mm,-16.41mm) on Top Layer And Text "R11" (8.738mm,-13.85mm) on Top Overlay [Top Overlay] to [Board Layer Stack Top Coverlay] clearance [0.086mm]
+Rule Violations :4
+
+Processing Rule : Silk to Silk (Clearance=0.15mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mm) (All)
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)
+Rule Violations :0
+
+
+Violations Detected : 4
+Waived Violations : 0
+Time Elapsed        : 00:00:05

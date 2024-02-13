@@ -1,0 +1,14 @@
+Change Component DesignItemId : Designator=J3 Old DesignItemId=PinHeader_2x13_2.54mm New DesignItemId=PinHeader_2x14_2.54mm_1
+Change Component Footprint: Designator=J3 Old Footprint=PinHeader_2x13_2.54mm New Footprint=PinHeader_2x14_2.54mm
+Change Component Comment : Designator=J3 Old Comment=PinHeader_2x13 New Comment=PinHeader_2x14
+Change Component Description : Designator=J3 Old Description=PinHeader_2x13 2.54mm Pitch New Description=PinHeader_2x14 2.54mm Pitch
+Add Net: Net with name "NetR?_1" already exists
+Add Net: Net with name "NetR?_1" already exists
+Add Net: Net with name "NetR?_1" already exists
+Add Net: Net with name "NetR?_1" already exists
+Add Net: Net with name "NetR?_1" already exists
+Added Member To Class: ClassName=HumRigid1 Member=Component R? 10K
+Added Member To Class: ClassName=HumRigid1 Member=Component R? 10K
+Added Member To Class: ClassName=HumRigid1 Member=Component R? 10K
+Added Member To Class: ClassName=HumRigid1 Member=Component R? 10K
+Added Member To Class: ClassName=HumRigid1 Member=Component R? 10K
