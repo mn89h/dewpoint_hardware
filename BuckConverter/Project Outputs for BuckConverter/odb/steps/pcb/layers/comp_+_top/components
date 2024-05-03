@@ -1,0 +1,294 @@
+UNITS=MM
+#
+#Component attribute names
+#
+@0 .comp_mount_type
+@1 .comp_height
+
+# CMP 0
+CMP 8 85.12625342 92.49999788 270 N U1 MIC4605-2YM-TR ;0=1,1=0.5300
+PRP Datasheet_Link 'http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en579235'
+PRP Geometry.Height '1.63mm'
+PRP Manufacturer_Name 'Microchip'
+PRP Manufacturer_Part_Number 'MIC4605-2YM-TR'
+PRP Mouser_Part_Number '998-MIC4605-2YM-TR'
+PRP Mouser_Price/Stock 'https://www.mouser.co.uk/ProductDetail/Microchip-Technology/MIC4605-2YM-TR?qs=U6T8BxXiZAVl8W1xjIUxZQ%3D%3D'
+PRP Supplier_1 'Arrow Electronics'
+PRP Supplier_2 'Digi-Key'
+PRP Supplier_3 'Digi-Key'
+PRP Supplier_4 'Mouser'
+PRP Supplier_Part_Number_1 'MIC4605-2YM-TR'
+PRP Supplier_Part_Number_2 '576-4463-1-ND'
+PRP Supplier_Part_Number_3 '576-4463-6-ND'
+PRP Supplier_Part_Number_4 '998-MIC4605-2YM-TR'
+TOP 0 83.22125342 89.7879967 270 N 13 8 1
+TOP 1 84.49125342 89.7879967 270 N 3 0 2
+TOP 2 85.76125342 89.7879967 270 N 2 1 3
+TOP 3 87.03125342 89.7879967 270 N 11 6 4
+TOP 4 87.03125342 95.21199906 270 N 8 0 5
+TOP 5 85.76125342 95.21199906 270 N 9 0 6
+TOP 6 84.49125342 95.21199906 270 N 14 10 7
+TOP 7 83.22125342 95.21199906 270 N 1 1 8
+#
+# CMP 1
+CMP 3 100.00000066 91.00000088 270 N R7 0R020 ;0=1,1=0.6200
+PRP Supplier_1 'Digi-Key'
+PRP Supplier_2 'Digi-Key'
+PRP Supplier_3 'Mouser'
+PRP Supplier_Part_Number_1 '283-MSMA2512R0200FGNCT-ND'
+PRP Supplier_Part_Number_2 '283-MSMA2512R0200FGNDKR-ND'
+PRP Supplier_Part_Number_3 '504-MSMA2512R0200FGN'
+PRP Value '0R020'
+TOP 0 100.00000066 88.92500122 180 N 7 2 1
+TOP 1 100.00000066 93.07500054 180 N 11 2 2
+#
+# CMP 2
+CMP 6 95.0000005 94.99999796 90 N R6 DNP ;0=1,1=0.5500
+PRP Category 'Resistor'
+PRP ComponentLink1Description 'Manufacturer Website'
+PRP ComponentLink1URL 'http://www.yageo.com'
+PRP Manufacturer 'Yageo'
+PRP Manufacturer_Part_Number 'RC0805FR-0710RL'
+PRP Package '0805'
+PRP Power_(Watts) '0.125'
+PRP Resistance_(Ohms) '10'
+PRP Supplier_1 'Digi-Key'
+PRP Supplier_2 'Digi-Key'
+PRP Supplier_3 'Mouser'
+PRP Supplier_Part_Number_1 '311-1.00HRCT-ND'
+PRP Supplier_Part_Number_2 '311-1.00HRDKR-ND'
+PRP Supplier_Part_Number_3 '603-RC0603FR-071RL'
+PRP Tolerance_(_) '1'
+PRP Value 'DNP'
+TOP 0 95.0000005 95.8269991 0 N 14 9 1
+TOP 1 95.0000005 94.17299936 0 N 11 1 2
+#
+# CMP 3
+CMP 6 95.0000005 91.17299774 90 N R5 DNP ;0=1,1=0.5500
+PRP Category 'Resistor'
+PRP ComponentLink1Description 'Manufacturer Website'
+PRP ComponentLink1URL 'http://www.yageo.com'
+PRP Manufacturer 'Yageo'
+PRP Manufacturer_Part_Number 'RC0805FR-0710RL'
+PRP Package '0805'
+PRP Power_(Watts) '0.125'
+PRP Resistance_(Ohms) '10'
+PRP Supplier_1 'Digi-Key'
+PRP Supplier_2 'Digi-Key'
+PRP Supplier_3 'Mouser'
+PRP Supplier_Part_Number_1 '311-1.00HRCT-ND'
+PRP Supplier_Part_Number_2 '311-1.00HRDKR-ND'
+PRP Supplier_Part_Number_3 '603-RC0603FR-071RL'
+PRP Tolerance_(_) '1'
+PRP Value 'DNP'
+TOP 0 95.0000005 91.99999888 0 N 11 3 1
+TOP 1 95.0000005 90.34599914 0 N 13 1 2
+#
+# CMP 4
+CMP 3 93.57499954 99.49999912 180 N R4 0R020 ;0=1,1=0.6200
+PRP Supplier_1 'Digi-Key'
+PRP Supplier_2 'Digi-Key'
+PRP Supplier_3 'Mouser'
+PRP Supplier_Part_Number_1 '283-MSMA2512R0200FGNCT-ND'
+PRP Supplier_Part_Number_2 '283-MSMA2512R0200FGNDKR-ND'
+PRP Supplier_Part_Number_3 '504-MSMA2512R0200FGN'
+PRP Value '0R020'
+TOP 0 95.6499992 99.49999912 90 N 14 8 1
+TOP 1 91.49999988 99.49999912 90 N 5 2 2
+#
+# CMP 5
+CMP 6 89.35250608 95.2999999 0 N R3 10R ;0=1,1=0.5500
+PRP Category 'Resistor'
+PRP ComponentLink1Description 'Manufacturer Website'
+PRP ComponentLink1URL 'http://www.yageo.com'
+PRP Manufacturer 'Yageo'
+PRP Manufacturer_Part_Number 'RC0603FR-0710RL'
+PRP Package '0603'
+PRP Power_(Watts) '0.1'
+PRP Resistance_(Ohms) '10'
+PRP Supplier_1 'Farnell'
+PRP Supplier_2 'Digi-Key'
+PRP Supplier_Part_Number_1 '9238247'
+PRP Supplier_Part_Number_2 '311-10.0HRCT-ND'
+PRP Tolerance_(_) '1'
+PRP Value '10R'
+TOP 0 88.52550494 95.2999999 270 N 1 0 1
+TOP 1 90.17950468 95.2999999 270 N 4 1 2
+#
+# CMP 6
+CMP 6 89.5999986 88.49999826 0 N R2 10R ;0=1,1=0.5500
+PRP Category 'Resistor'
+PRP ComponentLink1Description 'Manufacturer Website'
+PRP ComponentLink1URL 'http://www.yageo.com'
+PRP Manufacturer 'Yageo'
+PRP Manufacturer_Part_Number 'RC0603FR-0710RL'
+PRP Package '0603'
+PRP Power_(Watts) '0.1'
+PRP Resistance_(Ohms) '10'
+PRP Supplier_1 'Farnell'
+PRP Supplier_2 'Digi-Key'
+PRP Supplier_Part_Number_1 '9238247'
+PRP Supplier_Part_Number_2 '311-10.0HRCT-ND'
+PRP Tolerance_(_) '1'
+PRP Value '10R'
+TOP 0 88.77299746 88.49999826 270 N 2 0 1
+TOP 1 90.4269972 88.49999826 270 N 6 1 2
+#
+# CMP 7
+CMP 6 84.12625288 86.99999618 90 N R1 1R ;0=1,1=0.5500
+PRP Category 'Resistor'
+PRP ComponentLink1Description 'Manufacturer Website'
+PRP ComponentLink1URL 'http://www.yageo.com'
+PRP Manufacturer 'Yageo'
+PRP Manufacturer_Part_Number 'RC0805FR-0710RL'
+PRP Package '0805'
+PRP Power_(Watts) '0.125'
+PRP Resistance_(Ohms) '10'
+PRP Supplier_1 'Digi-Key'
+PRP Supplier_2 'Digi-Key'
+PRP Supplier_3 'Mouser'
+PRP Supplier_Part_Number_1 '311-1.00HRCT-ND'
+PRP Supplier_Part_Number_2 '311-1.00HRDKR-ND'
+PRP Supplier_Part_Number_3 '603-RC0603FR-071RL'
+PRP Tolerance_(_) '1'
+PRP Value '1R'
+TOP 0 84.12625288 87.82699732 0 N 3 1 1
+TOP 1 84.12625288 86.17299758 0 N 12 1 2
+#
+# CMP 8
+CMP 7 91.49999988 91.99999888 0 N Q1 SIZ342ADT-T1-GE3 ;0=1,1=0.5300
+PRP Datasheet_Link 'https://www.vishay.com/doc?76711'
+PRP Geometry.Height '0.8mm'
+PRP Manufacturer_Name 'Vishay Semiconductors'
+PRP Manufacturer_Part_Number 'SIZ342ADT-T1-GE3'
+PRP Mouser_Part_Number '78-SIZ342ADT-T1-GE3'
+PRP Mouser_Price/Stock ''
+PRP Supplier_1 'Mouser'
+PRP Supplier_Part_Number_1 '78-SIZ342ADT-T1-GE3'
+TOP 0 90.52500056 90.61399962 0 N 6 0 1
+TOP 1 91.17499926 90.61399962 0 N 13 5 2
+TOP 2 91.8250005 90.61399962 0 N 13 7 3
+TOP 3 92.4749992 90.61399962 0 N 13 2 4
+TOP 4 92.4749992 93.38599814 0 N 5 0 5
+TOP 5 91.8250005 93.38599814 0 N 5 1 6
+TOP 6 91.17499926 93.38599814 0 N 5 3 7
+TOP 7 90.52500056 93.38599814 0 N 4 0 8
+TOP 8 91.49999988 92.43399852 0 N 11 4 9
+TOP 9 91.49999988 91.32899946 0 N 13 6 10
+#
+# CMP 9
+CMP 5 110.00000098 88.9999998 0 N L1 PM127SH-330M-RC ;0=1,1=0.5300
+PRP Datasheet_Link 'https://www.bourns.com/docs/Product-Datasheets/pm127sh_series.pdf'
+PRP Geometry.Height '8mm'
+PRP Manufacturer_Name 'Bourns'
+PRP Manufacturer_Part_Number 'PM127SH-330M-RC'
+PRP Mouser_Part_Number '542-PM127SH-330M-RC'
+PRP Mouser_Price/Stock 'https://www.mouser.co.uk/ProductDetail/Bourns/PM127SH-330M-RC?qs=eR5JJ6cMb%252Bbm7NbWn3468w%3D%3D'
+PRP Supplier_1 'Digi-Key'
+PRP Supplier_2 'Digi-Key'
+PRP Supplier_3 'Mouser'
+PRP Supplier_Part_Number_1 'PM127SH-330M-RCCT-ND'
+PRP Supplier_Part_Number_2 'PM127SH-330M-RCDKR-ND'
+PRP Supplier_Part_Number_3 '542-PM127SH-330M-RC'
+TOP 0 105.05000072 88.9999998 270 N 7 1 1
+TOP 1 114.95000124 88.9999998 270 N 10 3 2
+#
+# CMP 10
+CMP 9 121.99999984 96.00000104 270 N J3 Screw_Terminal_2_Pin_5mm ;0=2,1=0.5300
+TOP 0 121.99999984 96.00000104 270 N 10 1 1
+TOP 1 121.99999984 101.0000012 270 N 14 4 2
+#
+# CMP 11
+CMP 9 121.99999984 82.9999991 270 N J2 Screw_Terminal_2_Pin_5mm ;0=2,1=0.5300
+TOP 0 121.99999984 82.9999991 270 N 13 3 1
+TOP 1 121.99999984 87.99999926 270 N 14 6 2
+#
+# CMP 12
+CMP 4 78.30000088 87.22000082 180 N J1 PinHeader_1x4 ;0=2,1=0.5300
+TOP 0 78.30000088 87.22000082 180 N 14 14 1
+TOP 1 78.30000088 89.76000082 180 N 14 11 2
+TOP 2 78.30000088 92.30000082 180 N 9 1 3
+TOP 3 78.30000088 94.84000082 180 N 8 1 4
+#
+# CMP 13
+CMP 2 96.00000104 82.0000011 0 N C5 47u ;0=1,1=6.1000
+PRP Supplier_1 'Mouser'
+PRP Supplier_2 'Digi-Key'
+PRP Supplier_3 'Digi-Key'
+PRP Supplier_Part_Number_1 '667-EEE-FK1E470P'
+PRP Supplier_Part_Number_2 'PCE3804CT-ND'
+PRP Supplier_Part_Number_3 'PCE3804DKR-ND'
+PRP Value '47u'
+TOP 0 93.35000126 82.0000011 270 N 13 10 1
+TOP 1 98.65000082 82.0000011 270 N 14 7 2
+#
+# CMP 14
+CMP 2 111.99999952 101.0000012 180 N C4 47u ;0=1,1=6.1000
+PRP Supplier_1 'Mouser'
+PRP Supplier_2 'Digi-Key'
+PRP Supplier_3 'Digi-Key'
+PRP Supplier_Part_Number_1 '667-EEE-FK1E470P'
+PRP Supplier_Part_Number_2 'PCE3804CT-ND'
+PRP Supplier_Part_Number_3 'PCE3804DKR-ND'
+PRP Value '47u'
+TOP 0 114.6499993 101.0000012 90 N 10 2 1
+TOP 1 109.34999974 101.0000012 90 N 14 5 2
+#
+# CMP 15
+CMP 1 93.99999996 87.50000026 0 N C3 1uF ;0=1,1=1.4500
+PRP Category 'Capacitor'
+PRP ComponentLink1Description 'Manufacturer Website'
+PRP ComponentLink1URL 'http://www.yageo.com'
+PRP Manufacturer 'Yageo'
+PRP Manufacturer_Part_Number 'CC0805KKX7R8BB105'
+PRP Package '0805'
+PRP Supplier_1 'Farnell'
+PRP Supplier_2 'Digi-Key'
+PRP Supplier_3 'Mouser'
+PRP Supplier_Part_Number_1 '1458903'
+PRP Supplier_Part_Number_2 '311-1456-1-ND'
+PRP Supplier_Part_Number_3 '603-CC805KKX7R8BB105'
+PRP Tolerance_(_) '10'
+PRP Value '1uF'
+PRP Voltage_Rating_(Volts) '25'
+TOP 0 93.07299902 87.50000026 270 N 13 4 1
+TOP 1 94.92699836 87.50000026 270 N 14 12 2
+#
+# CMP 16
+CMP 0 86.62625296 86.49999718 0 N C2 100nF ;0=1,1=0.9000
+PRP Category 'Capacitor'
+PRP ComponentLink1Description 'Manufacturer Website'
+PRP ComponentLink1URL 'http://www.yageo.com'
+PRP Manufacturer 'Yageo'
+PRP Manufacturer_Part_Number 'CC0603KRX7R9BB104'
+PRP Package '0603'
+PRP Supplier_1 'Farnell'
+PRP Supplier_2 'Mouser'
+PRP Supplier_Part_Number_1 '1362556'
+PRP Supplier_Part_Number_2 '603-CC603KRX7R9BB104'
+PRP Tolerance_(_) '10'
+PRP Value '100nF'
+PRP Voltage_Rating_(Volts) '50'
+TOP 0 85.89925416 86.49999718 270 N 12 0 1
+TOP 1 87.3532543 86.49999718 270 N 11 5 2
+#
+# CMP 17
+CMP 1 81.14199672 88.09999906 90 N C1 1uF ;0=1,1=1.4500
+PRP Category 'Capacitor'
+PRP ComponentLink1Description 'Manufacturer Website'
+PRP ComponentLink1URL 'http://www.yageo.com'
+PRP Manufacturer 'Yageo'
+PRP Manufacturer_Part_Number 'CC0805KKX7R8BB105'
+PRP Package '0805'
+PRP Supplier_1 'Farnell'
+PRP Supplier_2 'Digi-Key'
+PRP Supplier_3 'Mouser'
+PRP Supplier_Part_Number_1 '1458903'
+PRP Supplier_Part_Number_2 '311-1456-1-ND'
+PRP Supplier_Part_Number_3 '603-CC805KKX7R8BB105'
+PRP Tolerance_(_) '10'
+PRP Value '1uF'
+PRP Voltage_Rating_(Volts) '25'
+TOP 0 81.14199672 89.027 0 N 13 9 1
+TOP 1 81.14199672 87.17300066 0 N 14 13 2
+#

@@ -1,0 +1,42 @@
+THICKNESS=0
+USER_PARAMS=
+
+TOOLS {
+    NUM=1
+    TYPE=PLATED
+    MIN_TOL=0
+    MAX_TOL=0
+    BIT=
+    FINISH_SIZE=15.7
+    DRILL_SIZE=15.7
+}
+
+TOOLS {
+    NUM=2
+    TYPE=PLATED
+    MIN_TOL=0
+    MAX_TOL=0
+    BIT=
+    FINISH_SIZE=40.2
+    DRILL_SIZE=40.2
+}
+
+TOOLS {
+    NUM=3
+    TYPE=PLATED
+    MIN_TOL=0
+    MAX_TOL=0
+    BIT=
+    FINISH_SIZE=51.2
+    DRILL_SIZE=51.2
+}
+
+TOOLS {
+    NUM=4
+    TYPE=PLATED
+    MIN_TOL=0
+    MAX_TOL=0
+    BIT=
+    FINISH_SIZE=118.1
+    DRILL_SIZE=118.1
+}
