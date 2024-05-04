@@ -1,0 +1,25 @@
+Output: Gerber X2 Files
+Type  : GerberX2
+From  : Variant [[No Variations]] of Project [MirrorPCB.PrjPcb]
+   Generated File[Mirror_PCB1_Copper_Signal_Top.gbr]
+   Generated File[Mirror_PCB1_Copper_Signal_Bot.gbr]
+   Generated File[Mirror_PCB1_Legend_Top.gbr]
+   Generated File[Mirror_PCB1_Legend_Bot.gbr]
+   Generated File[Mirror_PCB1_Soldermask_Top.gbr]
+   Generated File[Mirror_PCB1_Soldermask_Bot.gbr]
+   Generated File[Mirror_PCB1_Paste_Top.gbr]
+   Generated File[Mirror_PCB1_Top_Tenting.gbr]
+   Generated File[Mirror_PCB1_Bottom_Tenting.gbr]
+   Generated File[Mirror_PCB1_Fab_Notes.gbr]
+   Generated File[Mirror_PCB1_Profile.gbr]
+   Generated File[Mirror_PCB1_NPTH_Drill.gbr]
+   Generated File[Mirror_PCB1_PTH_Drill.gbr]
+   Generated File[Mirror_PCB1.RUL]
+   Generated File[Mirror_PCB1.EXTREP]
+   Generated File[Mirror_PCB1.REP]
+
+
+Files Generated   : 16
+Documents Printed : 0
+
+Finished Output Generation At 23:00:41 On 17.01.2024

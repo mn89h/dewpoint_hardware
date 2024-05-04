@@ -1,0 +1,2 @@
+Record=DiagramHierarchy|SourceDocument=Schematic.MbsDoc|Kind=Multi-board Schematic Module|Designator=M1|Source=..\MirrorPCB\MirrorPCB.PrjPcb
+Record=SubProject|SourceDocument=Schematic.MbsDoc|ProjectPath=..\MirrorPCB\MirrorPCB.PrjPcb

@@ -1,0 +1,116 @@
+Protel Design System Design Rule Check
+PCB File : C:\Users\Public\Documents\Altium\HumidityBoards2\BasePCB\Base_PCB1.PcbDoc
+Date     : 17.01.2024
+Time     : 14:10:25
+
+Processing Rule : Clearance Constraint (Gap=0.254mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.4mm) (IsStitchingVia and InNet('GND')),((IsVia and (Not IsStitchingVia)) Or IsPad)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.1mm) (Max=5mm) (Preferred=0.2mm) (All)
+Rule Violations :0
+
+Processing Rule : Routing Layers(All)
+Rule Violations :0
+
+Processing Rule : Routing Via (MinHoleWidth=0.2mm) (MaxHoleWidth=5mm) (PreferredHoleWidth=0.2mm) (MinWidth=0.4mm) (MaxWidth=6mm) (PreferedWidth=0.5mm) (All)
+Rule Violations :0
+
+Processing Rule : Differential Pairs Uncoupled Length using the Gap Constraints (Min=0.254mm) (Max=0.254mm) (Prefered=0.254mm)  and Width Constraints (Min=0.254mm) (Max=0.254mm) (Prefered=0.254mm) (All)
+Rule Violations :0
+
+Processing Rule : SMD Neck-Down Constraint (Percent=100%) (All)
+   Violation between SMD Neck-Down Constraint: Between Pad D1-1(37mm,85.917mm) on Top And Track (35.546mm,85.892mm)(36.975mm,85.892mm) on Top Relative Track Width: 125.00%
+   Violation between SMD Neck-Down Constraint: Between Pad D2-1(52.262mm,85.25mm) on Top And Track (50.162mm,85.25mm)(52.262mm,85.25mm) on Top Relative Track Width: 125.00%
+   Violation between SMD Neck-Down Constraint: Between Pad Q1-10(31.029mm,87.045mm) on Top And Track (30.222mm,86.743mm)(30.722mm,86.243mm) on Top Relative Track Width: 133.45%
+   Violation between SMD Neck-Down Constraint: Between Pad Q1-2(30.314mm,87.37mm) on Top And Track (30.314mm,86.72mm)(30.722mm,87.129mm) on Top Relative Track Width: 166.67%
+   Violation between SMD Neck-Down Constraint: Between Pad Q1-3(30.314mm,86.72mm) on Top And Track (28.218mm,86.743mm)(30.222mm,86.743mm) on Top Relative Track Width: 166.67%
+   Violation between SMD Neck-Down Constraint: Between Pad Q1-4(30.314mm,86.07mm) on Top And Track (30.222mm,86.743mm)(30.722mm,86.243mm) on Top Relative Track Width: 166.67%
+   Violation between SMD Neck-Down Constraint: Between Pad Q2-10(62.185mm,86.875mm) on Top And Track (61.193mm,86.186mm)(61.881mm,86.875mm) on Top Relative Track Width: 133.45%
+   Violation between SMD Neck-Down Constraint: Between Pad Q2-2(61.47mm,87.2mm) on Top And Track (61.193mm,86.186mm)(61.881mm,86.875mm) on Top Relative Track Width: 166.67%
+   Violation between SMD Neck-Down Constraint: Between Pad Q2-3(61.47mm,86.55mm) on Top And Track (59.3mm,86.186mm)(61.193mm,86.186mm) on Top Relative Track Width: 166.67%
+   Violation between SMD Neck-Down Constraint: Between Pad Q2-4(61.47mm,85.9mm) on Top And Track (59.3mm,86.186mm)(61.193mm,86.186mm) on Top Relative Track Width: 166.67%
+   Violation between SMD Neck-Down Constraint: Between Pad R1-2(35.815mm,11.678mm) on Top And Track (34.487mm,10.35mm)(35.815mm,11.678mm) on Top Relative Track Width: 107.14%
+   Violation between SMD Neck-Down Constraint: Between Pad R13-1(38.939mm,85.313mm) on Top And Track (38.939mm,85.313mm)(39.075mm,85.313mm) on Top Relative Track Width: 142.86%
+   Violation between SMD Neck-Down Constraint: Between Pad R13-2(38.939mm,86.967mm) on Top And Track (38.939mm,86.967mm)(39.363mm,87.391mm) on Top Relative Track Width: 142.86%
+   Violation between SMD Neck-Down Constraint: Between Pad R18-2(35mm,85.346mm) on Top And Track (32.716mm,85mm)(34.654mm,85mm) on Top Relative Track Width: 142.86%
+   Violation between SMD Neck-Down Constraint: Between Pad R19-1(56.5mm,84.987mm) on Top And Track (56.65mm,84.836mm)(62.643mm,84.836mm) on Top Relative Track Width: 142.86%
+   Violation between SMD Neck-Down Constraint: Between Pad R19-2(56.5mm,86.641mm) on Top And Track (56.5mm,86.641mm)(56.804mm,86.336mm) on Top Relative Track Width: 142.86%
+   Violation between SMD Neck-Down Constraint: Between Pad R24-2(54.406mm,84.987mm) on Top And Track (54.362mm,85.225mm)(54.6mm,84.987mm) on Top Relative Track Width: 142.86%
+Rule Violations :17
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Minimum Annular Ring (Minimum=0.075mm) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.3mm) (Max=7.62mm) (All)
+Rule Violations :0
+
+Processing Rule : Pads and Vias to follow the Drill pairs settings
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=0.254mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=0.1mm) (All),(All)
+   Violation between Minimum Solder Mask Sliver Constraint: (0.079mm < 0.1mm) Between Pad C12-2(40.198mm,32.712mm) on Top And Via (41.503mm,33mm) from Top to Bottom [Top Solder] Mask Sliver [0.079mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.015mm < 0.1mm) Between Pad C13-1(45mm,77.5mm) on Top And Via (45mm,80mm) from Top to Bottom [Top Solder] Mask Sliver [0.015mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0mm < 0.1mm) Between Pad HDR2-7(95.05mm,83.473mm) on Top And Via (95.063mm,82.673mm) from Top to Bottom [Top Solder] Mask Sliver [0mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.064mm < 0.1mm) Between Pad R24-1(54.406mm,86.641mm) on Top And Via (53.392mm,86.641mm) from Top to Bottom [Top Solder] Mask Sliver [0.064mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.095mm < 0.1mm) Between Pad U4-1(54.975mm,14.45mm) on Top And Pad U4-17(54mm,12.6mm) on Top [Top Solder] Mask Sliver [0.095mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.095mm < 0.1mm) Between Pad U4-10(53.675mm,10.75mm) on Top And Pad U4-17(54mm,12.6mm) on Top [Top Solder] Mask Sliver [0.095mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.095mm < 0.1mm) Between Pad U4-11(54.325mm,10.75mm) on Top And Pad U4-17(54mm,12.6mm) on Top [Top Solder] Mask Sliver [0.095mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.095mm < 0.1mm) Between Pad U4-12(54.975mm,10.75mm) on Top And Pad U4-17(54mm,12.6mm) on Top [Top Solder] Mask Sliver [0.095mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.095mm < 0.1mm) Between Pad U4-13(55.85mm,11.625mm) on Top And Pad U4-17(54mm,12.6mm) on Top [Top Solder] Mask Sliver [0.095mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.095mm < 0.1mm) Between Pad U4-14(55.85mm,12.275mm) on Top And Pad U4-17(54mm,12.6mm) on Top [Top Solder] Mask Sliver [0.095mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.095mm < 0.1mm) Between Pad U4-15(55.85mm,12.925mm) on Top And Pad U4-17(54mm,12.6mm) on Top [Top Solder] Mask Sliver [0.095mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.095mm < 0.1mm) Between Pad U4-16(55.85mm,13.575mm) on Top And Pad U4-17(54mm,12.6mm) on Top [Top Solder] Mask Sliver [0.095mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.095mm < 0.1mm) Between Pad U4-17(54mm,12.6mm) on Top And Pad U4-2(54.325mm,14.45mm) on Top [Top Solder] Mask Sliver [0.095mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.095mm < 0.1mm) Between Pad U4-17(54mm,12.6mm) on Top And Pad U4-3(53.675mm,14.45mm) on Top [Top Solder] Mask Sliver [0.095mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.095mm < 0.1mm) Between Pad U4-17(54mm,12.6mm) on Top And Pad U4-4(53.025mm,14.45mm) on Top [Top Solder] Mask Sliver [0.095mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.095mm < 0.1mm) Between Pad U4-17(54mm,12.6mm) on Top And Pad U4-5(52.15mm,13.575mm) on Top [Top Solder] Mask Sliver [0.095mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.095mm < 0.1mm) Between Pad U4-17(54mm,12.6mm) on Top And Pad U4-6(52.15mm,12.925mm) on Top [Top Solder] Mask Sliver [0.095mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.095mm < 0.1mm) Between Pad U4-17(54mm,12.6mm) on Top And Pad U4-7(52.15mm,12.275mm) on Top [Top Solder] Mask Sliver [0.095mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.095mm < 0.1mm) Between Pad U4-17(54mm,12.6mm) on Top And Pad U4-8(52.15mm,11.625mm) on Top [Top Solder] Mask Sliver [0.095mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.095mm < 0.1mm) Between Pad U4-17(54mm,12.6mm) on Top And Pad U4-9(53.025mm,10.75mm) on Top [Top Solder] Mask Sliver [0.095mm]
+Rule Violations :20
+
+Processing Rule : Silk To Solder Mask (Clearance=0mm) (IsPad),(All)
+Rule Violations :0
+
+Processing Rule : Silk to Silk (Clearance=0.01mm) (All),(All)
+   Violation between Silk To Silk Clearance Constraint: (0.008mm < 0.01mm) Between Text "C18" (65.596mm,97.843mm) on Top Overlay And Track (69.004mm,90.058mm)(69.004mm,97.658mm) on Top Overlay Silk Text to Silk Clearance [0.008mm]
+   Violation between Silk To Silk Clearance Constraint: (0.008mm < 0.01mm) Between Text "C18" (65.596mm,97.843mm) on Top Overlay And Track (69.004mm,97.658mm)(79.504mm,97.658mm) on Top Overlay Silk Text to Silk Clearance [0.008mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.01mm) Between Text "C19" (58.385mm,83.655mm) on Top Overlay And Track (60.951mm,85.351mm)(64.761mm,85.351mm) on Top Overlay Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.01mm) Between Text "R17" (36.396mm,93.377mm) on Top Overlay And Track (40.293mm,90.4mm)(40.293mm,98mm) on Top Overlay Silk Text to Silk Clearance [0mm]
+Rule Violations :4
+
+Processing Rule : Net Antennae (Tolerance=0mm) (All)
+Rule Violations :0
+
+Processing Rule : Board Clearance Constraint (Gap=0mm) (All)
+Rule Violations :0
+
+Processing Rule : Component Clearance Constraint ( Horizontal Gap = 0.254mm, Vertical Gap = 0.254mm ) (All),(All) 
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)
+Rule Violations :0
+
+
+Violations Detected : 41
+Waived Violations : 0
+Time Elapsed        : 00:00:02

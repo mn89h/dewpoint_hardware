@@ -1,0 +1,996 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Malte\Documents\Altium\AD23\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">17.01.2024</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">17:26:58</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:04</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc" class="file"><acronym title="C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc">C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">26</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">166</td></tr>
+</table>
+</td>
+</table><a name="IDTF1Z2JU2YDWGHRQGMMPCVVZIIGTA1UCP3C1DSGOBGLXBXE0YY4K"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDREISOVLUVFVNIZHFDESYHHWTBDGFXLSBBZBCNMKSGWSDPVNJEWRL">Zero hole size multi-layer pad(s) detected</a></td>
+<td class="column2">11</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDFZHH0CWRMT3EMKTWOF0G2YKMAOQRQP2ZDHRU3ZFMV5B203VE0XPF">Multilayer Pads with 0 size Hole found</a></td>
+<td class="column2">15</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">26</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID3L1NKN3EETS1OITHDIY5IVFJQNWGWXSONWDLGS4VR1Q5LTRNZUI">Clearance Constraint (Gap=0.15mm) (All),(All)</a></td>
+<td class="column2">13</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDVFVPUXEEI1TFB3LVB4ROVQ0PRGWDMOHS11C5NDKM1NWYFVN5ZTTO">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">6</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUEBTB2D3LTAHJUTDDWQ4EDVKEDRFEQYQCRVTZNJB1VDIJM5PP0AE">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDHOCBYAZ1H2PVLGKFIRX45L0NQBYZ0SFCSWZAWDL44PBQVWZEJLAE">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDQXXEBI1LMHFSIRLQ2TNSCMUVEGAT0PNJ33WHISBAXSRZSFA454FD">Width Constraint (Min=0.102mm) (Max=0.8mm) (Preferred=0.15mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJFJOLFNGCQ4IKSPIDLILRGTSLH5KDZS3QALKLSHWDV4JVBNM4SL">Routing Layers(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMRCXLI3J5FCKPWMXTDG53QIXFHNO0AOIQT4LL1JKKQZ5QQ02GJ5L">Routing Via (MinHoleWidth=0.15mm) (MaxHoleWidth=5mm) (PreferredHoleWidth=0.254mm) (MinWidth=0.35mm) (MaxWidth=8mm) (PreferedWidth=0.254mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDVQNW3C1EAT5WK0OYPIR2YRFTSCNVSU2RTLOXFCCXPVGDVASK2JPC">Routing Via (MinHoleWidth=0.2mm) (MaxHoleWidth=0.2mm) (PreferredHoleWidth=0.2mm) (MinWidth=0.4mm) (MaxWidth=0.4mm) (PreferedWidth=0.4mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDE5IRRRPW0KC4OMTV2U0GRB1VMJRVHLNTAHVX02N5YFPSDWLWZGRP">Differential Pairs Uncoupled Length using the Gap Constraints (Min=0.15mm) (Max=0.3mm) (Prefered=0.15mm)  and Width Constraints (Min=0.102mm) (Max=0.3mm) (Prefered=0.15mm) (InDifferentialPairClass('All Differential Pairs'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID0C0KAP3ZWSZ4ICVXIDPZPLTANINFYL42EPN3KTEYBUFLCMMEMKOM">Differential Pairs Uncoupled Length using the Gap Constraints (Min=0.102mm) (Max=0.3mm) (Prefered=0.15mm)  and Width Constraints (Min=0.102mm) (Max=0.3mm) (Prefered=0.15mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDZLRLLMNTDCBGBRETN4PL5SMWUGYGC2ZFWZN5GDDZVIVFIYUOI5BG">SMD Neck-Down Constraint (Percent=100%) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDQ3YQ4KGBXNW3O4MYN1XTGXYFDLTCPCV5E31VOVC5JGOCLWJ3PTOB">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDSYHXXIKDHMUQBWASOF3WTMIRGMDRO0CDKPHB45JEORNWRU3G5X0J">Minimum Annular Ring (Minimum=0.1mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJZOGZQNTGGXLBO0SS1DKAJWKPGBSKVXAMQM4HTBLHSMY1FRQ4PLK">Hole Size Constraint (Min=0.15mm) (Max=5mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDHD1B1TZDXLGUCYIOEEBLE11JJFQ3A1GSV15UPSI4ZEWQI2S40T0G">Pads and Vias to follow the Drill pairs settings</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDEQFTPOKWASDCHQ35B1MRPOCTOBTOMERRGW2ZHEJHJYWU5LV3HYJI">Hole To Hole Clearance (Gap=0.3mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID3NLM0FPCNA1BKWKH0C3E3H3MXGA4WZ1N0YYV00CN5RG2JZVXKKCH">Minimum Solder Mask Sliver (Gap=0.5mm) (All),(All)</a></td>
+<td class="column2">73</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID0FGMA43E3RECBKIAE4DU5D4BKOTHMOO00W5GQULEAWBULKJQZKHG">Silk To Solder Mask (Clearance=0mm) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDFHIX34PFREJMCHTSPVEQNACQ0JYLCGLSR3KHE1NEK4KP5DR3RIWM">Silk to Silk (Clearance=0mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDM40VSDTQU2ZIJLSHTSRJ21MLMDLO4CJLHBWO0FNQIP54GASGNFNK">Net Antennae (Tolerance=500mm) (InNet('GND'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDYKQAU2XWX20PJF1Q3NK0WZWZSET5XRHSN3VL4RIQEKQUHBS4UWUF">Net Antennae (Tolerance=500mm) (InNet('NetC12_2'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDP4YQJYT4UOZXEM14440ACRT10CLGK2DZHWIO1EXV30G2H3S52MD">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDRPXJKYDYRJXKCUPXARWFMKO2JK2UIJQ35EFLVDPGHJ5TFWSJGCCH">Board Clearance Constraint (Gap=0mm) (All)</a></td>
+<td class="column2">15</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDX2FDXFIOGOFDB0EP0WHH1C15QCS0V5BALX01IAJF0ELKOK5QK3UL">Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic'))</a></td>
+<td class="column2">46</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLTQOG4E32P4VDIUDV4P1JDUOCNQRKKLL0LJOZEL14YET311XSS2C">Component Clearance Constraint ( Horizontal Gap = 0.254mm, Vertical Gap = 0.254mm ) (All),(All) </a></td>
+<td class="column2">11</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID3SJLE45WSDQCE32DFJY3EB21PCGDIM00NCTFFGCBFNAQBHOTFKIM">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">166</td>
+</tr>
+</table><br><a name="IDV1MWZGZ35ADJFH2CDEMEYHILLJH23T5U1AXCAOEXE4QAGGW2EAHH"><h2>Warnings</h2></a><a name="IDREISOVLUVFVNIZHFDESYHHWTBDGFXLSBBZBCNMKSGWSDPVNJEWRL"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="warning">Zero hole size multi-layer pad(s) detected</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12799.213mil|Location2.X=12818.898mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12799.213mil|Location2.X=12818.898mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-1(96.85mm,96.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">Net OSC_OUT</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12775.591mil|Location2.X=12795.276mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12775.591mil|Location2.X=12795.276mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-3(96.25mm,96.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">Net SCL_MAIN</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12751.969mil|Location2.X=12771.654mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12751.969mil|Location2.X=12771.654mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-5(95.65mm,96.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">Net SDA_MAIN</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12728.346mil|Location2.X=12748.031mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12728.346mil|Location2.X=12748.031mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-7(95.05mm,96.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">Net VIN</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12740.158mil|Location2.X=12759.843mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12740.158mil|Location2.X=12759.843mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-6(95.35mm,96.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">Net VIN</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12716.535mil|Location2.X=12736.22mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12716.535mil|Location2.X=12736.22mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-8(94.75mm,96.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">Net VIN</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12704.724mil|Location2.X=12724.409mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12704.724mil|Location2.X=12724.409mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-9(94.45mm,96.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">Net SDA_SEC</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12681.102mil|Location2.X=12700.787mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12681.102mil|Location2.X=12700.787mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-11(93.85mm,96.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">Net SCL_SEC</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12657.48mil|Location2.X=12677.165mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12657.48mil|Location2.X=12677.165mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-13(93.25mm,96.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9048.229mil|Location2.X=12677.165mil|Location1.Y=2945.866mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9048.229mil|Location2.X=12677.165mil|Location1.Y=2945.866mil|Location2.Y=6750mil|Absolute=True">Net GND</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12645.669mil|Location2.X=12665.354mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12645.669mil|Location2.X=12665.354mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-14(92.95mm,96.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9048.229mil|Location2.X=12677.165mil|Location1.Y=2945.866mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9048.229mil|Location2.X=12677.165mil|Location1.Y=2945.866mil|Location2.Y=6750mil|Absolute=True">Net GND</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12633.858mil|Location2.X=12653.543mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12633.858mil|Location2.X=12653.543mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-15(92.65mm,96.85mm) on Multi-Layer</acronym></a> on <a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9048.229mil|Location2.X=12677.165mil|Location1.Y=2945.866mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9048.229mil|Location2.X=12677.165mil|Location1.Y=2945.866mil|Location2.Y=6750mil|Absolute=True">Net GND</acronym></a></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDFZHH0CWRMT3EMKTWOF0G2YKMAOQRQP2ZDHRU3ZFMV5B203VE0XPF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="warning">Multilayer Pads with 0 size Hole found</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12799.213mil|Location2.X=12818.898mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12799.213mil|Location2.X=12818.898mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-1(96.85mm,96.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12787.402mil|Location2.X=12807.087mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12787.402mil|Location2.X=12807.087mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-2(96.55mm,96.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12775.591mil|Location2.X=12795.276mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12775.591mil|Location2.X=12795.276mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-3(96.25mm,96.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12763.78mil|Location2.X=12783.465mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12763.78mil|Location2.X=12783.465mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-4(95.95mm,96.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12751.969mil|Location2.X=12771.654mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12751.969mil|Location2.X=12771.654mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-5(95.65mm,96.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12728.346mil|Location2.X=12748.031mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12728.346mil|Location2.X=12748.031mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-7(95.05mm,96.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12740.158mil|Location2.X=12759.843mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12740.158mil|Location2.X=12759.843mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-6(95.35mm,96.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12716.535mil|Location2.X=12736.22mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12716.535mil|Location2.X=12736.22mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-8(94.75mm,96.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12704.724mil|Location2.X=12724.409mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12704.724mil|Location2.X=12724.409mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-9(94.45mm,96.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12692.914mil|Location2.X=12712.599mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12692.914mil|Location2.X=12712.599mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-10(94.15mm,96.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12681.102mil|Location2.X=12700.787mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12681.102mil|Location2.X=12700.787mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-11(93.85mm,96.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12669.291mil|Location2.X=12688.976mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12669.291mil|Location2.X=12688.976mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-12(93.55mm,96.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12657.48mil|Location2.X=12677.165mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12657.48mil|Location2.X=12677.165mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-13(93.25mm,96.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12645.669mil|Location2.X=12665.354mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12645.669mil|Location2.X=12665.354mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-14(92.95mm,96.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12633.858mil|Location2.X=12653.543mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12633.858mil|Location2.X=12653.543mil|Location1.Y=6663.386mil|Location2.Y=6750mil|Absolute=True">Pad HDR1-15(92.65mm,96.85mm) on Multi-Layer</acronym></a></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID3L1NKN3EETS1OITHDIY5IVFJQNWGWXSONWDLGS4VR1Q5LTRNZUI"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Clearance Constraint (Gap=0.15mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9682.571mil|Location2.X=9687.508mil|Location1.Y=4544.776mil|Location2.Y=4549.713mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9682.571mil|Location2.X=9687.508mil|Location1.Y=4544.776mil|Location2.Y=4549.713mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.15mm) Between Pad R16-(17.5mm,42mm) on Bottom Layer And Track (17.5mm,42mm)(17.5mm,42mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9682.571mil|Location2.X=9687.508mil|Location1.Y=4544.775mil|Location2.Y=4549.712mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9682.571mil|Location2.X=9687.508mil|Location1.Y=4544.775mil|Location2.Y=4549.712mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.15mm) Between Pad R16-(17.5mm,42mm) on Bottom Layer And Track (17.5mm,42mm)(24mm,42mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9662.886mil|Location2.X=9667.823mil|Location1.Y=4623.516mil|Location2.Y=4628.453mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9662.886mil|Location2.X=9667.823mil|Location1.Y=4623.516mil|Location2.Y=4628.453mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.15mm) Between Pad R16-(17.5mm,43.5mm) on Bottom Layer And Track (16mm,45mm)(17.5mm,43.5mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9682.571mil|Location2.X=9687.508mil|Location1.Y=4603.831mil|Location2.Y=4608.768mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9682.571mil|Location2.X=9687.508mil|Location1.Y=4603.831mil|Location2.Y=4608.768mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.15mm) Between Pad R16-(17.5mm,43.5mm) on Bottom Layer And Track (17.5mm,43.5mm)(24mm,43.5mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9367.61mil|Location2.X=9372.547mil|Location1.Y=4662.886mil|Location2.Y=4667.823mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9367.61mil|Location2.X=9372.547mil|Location1.Y=4662.886mil|Location2.Y=4667.823mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.15mm) Between Pad R16-2(9.5mm,45mm) on Bottom Layer And Track (9.5mm,45mm)(16mm,45mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11600.859mil|Location2.X=11606.109mil|Location1.Y=5289.304mil|Location2.Y=5294.554mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11600.859mil|Location2.X=11606.109mil|Location1.Y=5289.304mil|Location2.Y=5294.554mil|Absolute=True">Clearance Constraint: (0.03mm &lt; 0.102mm) Between Track (42.568mm,61mm)(70.2mm,61mm) on Top Layer And Via (66.228mm,60.6mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11505.438mil|Location2.X=11510.688mil|Location1.Y=4285.592mil|Location2.Y=4290.842mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11505.438mil|Location2.X=11510.688mil|Location1.Y=4285.592mil|Location2.Y=4290.842mil|Absolute=True">Clearance Constraint: (0.085mm &lt; 0.102mm) Between Track (46.035mm,35.327mm)(65.307mm,35.327mm) on Bottom Layer And Via (63.805mm,35.763mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11564.571mil|Location2.X=11569.821mil|Location1.Y=4666.733mil|Location2.Y=4671.983mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11564.571mil|Location2.X=11569.821mil|Location1.Y=4666.733mil|Location2.Y=4671.983mil|Absolute=True">Clearance Constraint: (0.1014mm (3.9923mil) &lt; 0.1016mm (4mil)) Between Track (46.307mm,45mm)(65.672mm,45mm) on Bottom Layer And Via (65.307mm,45.327mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11505.438mil|Location2.X=11510.688mil|Location1.Y=4286.17mil|Location2.Y=4291.42mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11505.438mil|Location2.X=11510.688mil|Location1.Y=4286.17mil|Location2.Y=4291.42mil|Absolute=True">Clearance Constraint: (0.056mm &lt; 0.102mm) Between Track (46.939mm,35.357mm)(64.516mm,35.357mm) on Top Layer And Via (63.805mm,35.763mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11505.438mil|Location2.X=11510.688mil|Location1.Y=4311.981mil|Location2.Y=4317.231mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11505.438mil|Location2.X=11510.688mil|Location1.Y=4311.981mil|Location2.Y=4317.231mil|Absolute=True">Clearance Constraint: (0.056mm &lt; 0.102mm) Between Track (46.939mm,36.17mm)(64.516mm,36.17mm) on Top Layer And Via (63.805mm,35.763mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9368.245mil|Location2.X=9371.912mil|Location1.Y=4663.521mil|Location2.Y=4667.188mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9368.245mil|Location2.X=9371.912mil|Location1.Y=4663.521mil|Location2.Y=4667.188mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.102mm) Between Track (5.757mm,45mm)(9.5mm,45mm) on Bottom Layer And Track (9.5mm,45mm)(16mm,45mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11505.438mil|Location2.X=11510.688mil|Location1.Y=4312.595mil|Location2.Y=4317.845mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11505.438mil|Location2.X=11510.688mil|Location1.Y=4312.595mil|Location2.Y=4317.845mil|Absolute=True">Clearance Constraint: (0.087mm &lt; 0.102mm) Between Track (63.5mm,36.25mm)(64mm,36.25mm) on Bottom Layer And Via (63.805mm,35.763mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11575.814mil|Location2.X=11581.064mil|Location1.Y=4725.687mil|Location2.Y=4730.937mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11575.814mil|Location2.X=11581.064mil|Location1.Y=4725.687mil|Location2.Y=4730.937mil|Absolute=True">Clearance Constraint: (0.097mm &lt; 0.102mm) Between Track (64.922mm,46.5mm)(70.362mm,46.5mm) on Top Layer And Via (65.592mm,46.947mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDVFVPUXEEI1TFB3LVB4ROVQ0PRGWDMOHS11C5NDKM1NWYFVN5ZTTO"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Short-Circuit Constraint (Allowed=No) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9662.559mil|Location2.X=9707.52mil|Location1.Y=4524.764mil|Location2.Y=4569.724mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9662.559mil|Location2.X=9707.52mil|Location1.Y=4524.764mil|Location2.Y=4569.724mil|Absolute=True">Short-Circuit Constraint: Between Pad R16-(17.5mm,42mm) on Bottom Layer And Track (17.5mm,42mm)(17.5mm,42mm) on Bottom Layer Location : [X = 246mm][Y = 115.5mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9663.205mil|Location2.X=9711.724mil|Location1.Y=4522.984mil|Location2.Y=4571.503mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9663.205mil|Location2.X=9711.724mil|Location1.Y=4522.984mil|Location2.Y=4571.503mil|Absolute=True">Short-Circuit Constraint: Between Pad R16-(17.5mm,42mm) on Bottom Layer And Track (17.5mm,42mm)(24mm,42mm) on Bottom Layer Location : [X = 246.062mm][Y = 115.5mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9656.705mil|Location2.X=9708.524mil|Location1.Y=4582.815mil|Location2.Y=4634.633mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9656.705mil|Location2.X=9708.524mil|Location1.Y=4582.815mil|Location2.Y=4634.633mil|Absolute=True">Short-Circuit Constraint: Between Pad R16-(17.5mm,43.5mm) on Bottom Layer And Track (16mm,45mm)(17.5mm,43.5mm) on Bottom Layer Location : [X = 245.938mm][Y = 117.062mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9663.205mil|Location2.X=9711.724mil|Location1.Y=4582.04mil|Location2.Y=4630.559mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9663.205mil|Location2.X=9711.724mil|Location1.Y=4582.04mil|Location2.Y=4630.559mil|Absolute=True">Short-Circuit Constraint: Between Pad R16-(17.5mm,43.5mm) on Bottom Layer And Track (17.5mm,43.5mm)(24mm,43.5mm) on Bottom Layer Location : [X = 246.062mm][Y = 117mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9351.164mil|Location2.X=9442.071mil|Location1.Y=4619.901mil|Location2.Y=4710.808mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9351.164mil|Location2.X=9442.071mil|Location1.Y=4619.901mil|Location2.Y=4710.808mil|Absolute=True">Short-Circuit Constraint: Between Pad R16-2(9.5mm,45mm) on Bottom Layer And Track (9.5mm,45mm)(16mm,45mm) on Bottom Layer Location : [X = 238.674mm][Y = 118.5mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9347.599mil|Location2.X=9392.559mil|Location1.Y=4642.874mil|Location2.Y=4687.834mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9347.599mil|Location2.X=9392.559mil|Location1.Y=4642.874mil|Location2.Y=4687.834mil|Absolute=True">Short-Circuit Constraint: Between Track (5.757mm,45mm)(9.5mm,45mm) on Bottom Layer And Track (9.5mm,45mm)(16mm,45mm) on Bottom Layer Location : [X = 238mm][Y = 118.5mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID3NLM0FPCNA1BKWKH0C3E3H3MXGA4WZ1N0YYV00CN5RG2JZVXKKCH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.5mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11676.876mil|Location2.X=11697.811mil|Location1.Y=3350.241mil|Location2.Y=3371.176mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11676.876mil|Location2.X=11697.811mil|Location1.Y=3350.241mil|Location2.Y=3371.176mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.254mm &lt; 0.5mm) Between Pad C11-1(68.959mm,12.589mm) on Top Layer And Pad C11-2(68.959mm,11.135mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.254mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9989.532mil|Location2.X=10010.468mil|Location1.Y=3880.202mil|Location2.Y=3901.137mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9989.532mil|Location2.X=10010.468mil|Location1.Y=3880.202mil|Location2.Y=3901.137mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.354mm &lt; 0.5mm) Between Pad C12-1(25.502mm,25.095mm) on Top Layer And Polygon Region (8 hole(s)) Board Layer Stack Top Coverlay [Board Layer Stack Top Coverlay] Mask Sliver [0.354mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11618.516mil|Location2.X=11639.451mil|Location1.Y=5096.235mil|Location2.Y=5117.17mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11618.516mil|Location2.X=11639.451mil|Location1.Y=5096.235mil|Location2.Y=5117.17mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.254mm &lt; 0.5mm) Between Pad C13-1(66.149mm,56.81mm) on Top Layer And Pad C13-2(67.603mm,56.81mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.254mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11579.595mil|Location2.X=11600.53mil|Location1.Y=5152.165mil|Location2.Y=5173.1mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11579.595mil|Location2.X=11600.53mil|Location1.Y=5152.165mil|Location2.Y=5173.1mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.441mm &lt; 0.5mm) Between Pad C13-1(66.149mm,56.81mm) on Top Layer And Pad U8-3(66.163mm,58.251mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.441mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11611.092mil|Location2.X=11632.026mil|Location1.Y=5152.165mil|Location2.Y=5173.1mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11611.092mil|Location2.X=11632.026mil|Location1.Y=5152.165mil|Location2.Y=5173.1mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.441mm &lt; 0.5mm) Between Pad C13-1(66.149mm,56.81mm) on Top Layer And Pad U8-4(66.963mm,58.251mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.441mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11623.516mil|Location2.X=11644.451mil|Location1.Y=5152.165mil|Location2.Y=5173.1mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11623.516mil|Location2.X=11644.451mil|Location1.Y=5152.165mil|Location2.Y=5173.1mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.441mm &lt; 0.5mm) Between Pad C13-2(67.603mm,56.81mm) on Top Layer And Pad U8-4(66.963mm,58.251mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.441mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11635.516mil|Location2.X=11656.451mil|Location1.Y=4444.574mil|Location2.Y=4465.51mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11635.516mil|Location2.X=11656.451mil|Location1.Y=4444.574mil|Location2.Y=4465.51mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.254mm &lt; 0.5mm) Between Pad C14-1(68.035mm,39.058mm) on Top Layer And Pad C14-2(66.581mm,39.058mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.254mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11618.516mil|Location2.X=11639.451mil|Location1.Y=4877.957mil|Location2.Y=4898.892mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11618.516mil|Location2.X=11639.451mil|Location1.Y=4877.957mil|Location2.Y=4898.892mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.254mm &lt; 0.5mm) Between Pad C15-1(67.603mm,50.066mm) on Top Layer And Pad C15-2(66.149mm,50.066mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.254mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11632.745mil|Location2.X=11653.68mil|Location1.Y=4821.78mil|Location2.Y=4842.715mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11632.745mil|Location2.X=11653.68mil|Location1.Y=4821.78mil|Location2.Y=4842.715mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.454mm &lt; 0.5mm) Between Pad C15-1(67.603mm,50.066mm) on Top Layer And Pad U10-3(66.963mm,48.612mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.454mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11611.092mil|Location2.X=11632.027mil|Location1.Y=4821.78mil|Location2.Y=4842.715mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11611.092mil|Location2.X=11632.027mil|Location1.Y=4821.78mil|Location2.Y=4842.715mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.454mm &lt; 0.5mm) Between Pad C15-2(66.149mm,50.066mm) on Top Layer And Pad U10-3(66.963mm,48.612mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.454mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11601.249mil|Location2.X=11622.184mil|Location1.Y=4821.78mil|Location2.Y=4842.715mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11601.249mil|Location2.X=11622.184mil|Location1.Y=4821.78mil|Location2.Y=4842.715mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.454mm &lt; 0.5mm) Between Pad C15-2(66.149mm,50.066mm) on Top Layer And Pad U10-4(66.163mm,48.612mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.454mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12193.225mil|Location2.X=12214.16mil|Location1.Y=4042.432mil|Location2.Y=4063.367mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12193.225mil|Location2.X=12214.16mil|Location1.Y=4042.432mil|Location2.Y=4063.367mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.354mm &lt; 0.5mm) Between Pad C2-1(82.401mm,28.619mm) on Top Layer And Pad C2-2(80.547mm,28.619mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.354mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12014.979mil|Location2.X=12035.914mil|Location1.Y=3887.737mil|Location2.Y=3908.672mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12014.979mil|Location2.X=12035.914mil|Location1.Y=3887.737mil|Location2.Y=3908.672mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.354mm &lt; 0.5mm) Between Pad C3-1(77.771mm,26.441mm) on Top Layer And Pad C3-2(77.771mm,24.587mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.354mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12131.091mil|Location2.X=12152.025mil|Location1.Y=4393.892mil|Location2.Y=4414.828mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12131.091mil|Location2.X=12152.025mil|Location1.Y=4393.892mil|Location2.Y=4414.828mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.354mm &lt; 0.5mm) Between Pad C5-1(78.969mm,39.196mm) on Top Layer And Pad C5-2(80.823mm,39.196mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.354mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12145.894mil|Location2.X=12166.829mil|Location1.Y=4489.139mil|Location2.Y=4510.074mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12145.894mil|Location2.X=12166.829mil|Location1.Y=4489.139mil|Location2.Y=4510.074mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.02mm &lt; 0.5mm) Between Pad C6-1(79.822mm,41.25mm) on Top Layer And Pad C6-2(80.722mm,41.25mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.02mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11464.277mil|Location2.X=11485.212mil|Location1.Y=3501.387mil|Location2.Y=3522.322mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11464.277mil|Location2.X=11485.212mil|Location1.Y=3501.387mil|Location2.Y=3522.322mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.354mm &lt; 0.5mm) Between Pad C8-1(63.886mm,14.876mm) on Top Layer And Pad C8-2(62.032mm,14.876mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.354mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11464.277mil|Location2.X=11485.212mil|Location1.Y=3411.652mil|Location2.Y=3432.587mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11464.277mil|Location2.X=11485.212mil|Location1.Y=3411.652mil|Location2.Y=3432.587mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.254mm &lt; 0.5mm) Between Pad C9-1(63.686mm,12.822mm) on Top Layer And Pad C9-2(62.232mm,12.822mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.254mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12786.777mil|Location2.X=12807.712mil|Location1.Y=6660.792mil|Location2.Y=6681.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12786.777mil|Location2.X=12807.712mil|Location1.Y=6660.792mil|Location2.Y=6681.727mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.5mm) Between Pad HDR1-1(96.85mm,96.85mm) on Multi-Layer And Pad HDR1-3(96.25mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.096mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12780.834mil|Location2.X=12801.769mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12780.834mil|Location2.X=12801.769mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.418mm &lt; 0.5mm) Between Pad HDR1-1(96.85mm,96.85mm) on Multi-Layer And Pad HDR1-4(95.95mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.418mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.418mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12680.477mil|Location2.X=12701.412mil|Location1.Y=6687.367mil|Location2.Y=6708.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12680.477mil|Location2.X=12701.412mil|Location1.Y=6687.367mil|Location2.Y=6708.302mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.5mm) Between Pad HDR1-10(94.15mm,96.85mm) on Multi-Layer And Pad HDR1-12(93.55mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.096mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12674.609mil|Location2.X=12695.544mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12674.609mil|Location2.X=12695.544mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.418mm &lt; 0.5mm) Between Pad HDR1-10(94.15mm,96.85mm) on Multi-Layer And Pad HDR1-13(93.25mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.418mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.418mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12709.968mil|Location2.X=12730.903mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12709.968mil|Location2.X=12730.903mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.418mm &lt; 0.5mm) Between Pad HDR1-10(94.15mm,96.85mm) on Multi-Layer And Pad HDR1-7(95.05mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.418mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.418mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12704.099mil|Location2.X=12725.034mil|Location1.Y=6687.367mil|Location2.Y=6708.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12704.099mil|Location2.X=12725.034mil|Location1.Y=6687.367mil|Location2.Y=6708.302mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.5mm) Between Pad HDR1-10(94.15mm,96.85mm) on Multi-Layer And Pad HDR1-8(94.75mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.096mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12668.666mil|Location2.X=12689.601mil|Location1.Y=6660.792mil|Location2.Y=6681.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12668.666mil|Location2.X=12689.601mil|Location1.Y=6660.792mil|Location2.Y=6681.727mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.5mm) Between Pad HDR1-11(93.85mm,96.85mm) on Multi-Layer And Pad HDR1-13(93.25mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.096mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12662.724mil|Location2.X=12683.658mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12662.724mil|Location2.X=12683.658mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.418mm &lt; 0.5mm) Between Pad HDR1-11(93.85mm,96.85mm) on Multi-Layer And Pad HDR1-14(92.95mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.418mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.418mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12698.231mil|Location2.X=12719.166mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12698.231mil|Location2.X=12719.166mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.418mm &lt; 0.5mm) Between Pad HDR1-11(93.85mm,96.85mm) on Multi-Layer And Pad HDR1-8(94.75mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.418mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.418mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12692.288mil|Location2.X=12713.223mil|Location1.Y=6660.792mil|Location2.Y=6681.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12692.288mil|Location2.X=12713.223mil|Location1.Y=6660.792mil|Location2.Y=6681.727mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.5mm) Between Pad HDR1-11(93.85mm,96.85mm) on Multi-Layer And Pad HDR1-9(94.45mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.096mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12656.855mil|Location2.X=12677.79mil|Location1.Y=6687.367mil|Location2.Y=6708.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12656.855mil|Location2.X=12677.79mil|Location1.Y=6687.367mil|Location2.Y=6708.302mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.5mm) Between Pad HDR1-12(93.55mm,96.85mm) on Multi-Layer And Pad HDR1-14(92.95mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.096mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12650.987mil|Location2.X=12671.922mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12650.987mil|Location2.X=12671.922mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.418mm &lt; 0.5mm) Between Pad HDR1-12(93.55mm,96.85mm) on Multi-Layer And Pad HDR1-15(92.65mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.418mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.418mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12686.345mil|Location2.X=12707.281mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12686.345mil|Location2.X=12707.281mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.418mm &lt; 0.5mm) Between Pad HDR1-12(93.55mm,96.85mm) on Multi-Layer And Pad HDR1-9(94.45mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.418mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.418mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12645.044mil|Location2.X=12665.979mil|Location1.Y=6660.792mil|Location2.Y=6681.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12645.044mil|Location2.X=12665.979mil|Location1.Y=6660.792mil|Location2.Y=6681.727mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.5mm) Between Pad HDR1-13(93.25mm,96.85mm) on Multi-Layer And Pad HDR1-15(92.65mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.096mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12774.966mil|Location2.X=12795.901mil|Location1.Y=6687.367mil|Location2.Y=6708.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12774.966mil|Location2.X=12795.901mil|Location1.Y=6687.367mil|Location2.Y=6708.302mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.5mm) Between Pad HDR1-2(96.55mm,96.85mm) on Multi-Layer And Pad HDR1-4(95.95mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.096mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12769.097mil|Location2.X=12790.032mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12769.097mil|Location2.X=12790.032mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.418mm &lt; 0.5mm) Between Pad HDR1-2(96.55mm,96.85mm) on Multi-Layer And Pad HDR1-5(95.65mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.418mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.418mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12763.155mil|Location2.X=12784.09mil|Location1.Y=6660.792mil|Location2.Y=6681.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12763.155mil|Location2.X=12784.09mil|Location1.Y=6660.792mil|Location2.Y=6681.727mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.5mm) Between Pad HDR1-3(96.25mm,96.85mm) on Multi-Layer And Pad HDR1-5(95.65mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.096mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12757.212mil|Location2.X=12778.147mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12757.212mil|Location2.X=12778.147mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.418mm &lt; 0.5mm) Between Pad HDR1-3(96.25mm,96.85mm) on Multi-Layer And Pad HDR1-6(95.35mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.418mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.418mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12751.344mil|Location2.X=12772.279mil|Location1.Y=6687.367mil|Location2.Y=6708.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12751.344mil|Location2.X=12772.279mil|Location1.Y=6687.367mil|Location2.Y=6708.302mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.5mm) Between Pad HDR1-4(95.95mm,96.85mm) on Multi-Layer And Pad HDR1-6(95.35mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.096mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12745.475mil|Location2.X=12766.41mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12745.475mil|Location2.X=12766.41mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.418mm &lt; 0.5mm) Between Pad HDR1-4(95.95mm,96.85mm) on Multi-Layer And Pad HDR1-7(95.05mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.418mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.418mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12739.532mil|Location2.X=12760.468mil|Location1.Y=6660.792mil|Location2.Y=6681.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12739.532mil|Location2.X=12760.468mil|Location1.Y=6660.792mil|Location2.Y=6681.727mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.5mm) Between Pad HDR1-5(95.65mm,96.85mm) on Multi-Layer And Pad HDR1-7(95.05mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.096mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12733.59mil|Location2.X=12754.525mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12733.59mil|Location2.X=12754.525mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.418mm &lt; 0.5mm) Between Pad HDR1-5(95.65mm,96.85mm) on Multi-Layer And Pad HDR1-8(94.75mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.418mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.418mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12727.721mil|Location2.X=12748.656mil|Location1.Y=6687.367mil|Location2.Y=6708.302mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12727.721mil|Location2.X=12748.656mil|Location1.Y=6687.367mil|Location2.Y=6708.302mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.5mm) Between Pad HDR1-6(95.35mm,96.85mm) on Multi-Layer And Pad HDR1-8(94.75mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.096mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12721.853mil|Location2.X=12742.788mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12721.853mil|Location2.X=12742.788mil|Location1.Y=6684.226mil|Location2.Y=6705.161mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.418mm &lt; 0.5mm) Between Pad HDR1-6(95.35mm,96.85mm) on Multi-Layer And Pad HDR1-9(94.45mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.418mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.418mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12715.91mil|Location2.X=12736.845mil|Location1.Y=6660.792mil|Location2.Y=6681.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12715.91mil|Location2.X=12736.845mil|Location1.Y=6660.792mil|Location2.Y=6681.727mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.096mm &lt; 0.5mm) Between Pad HDR1-7(95.05mm,96.85mm) on Multi-Layer And Pad HDR1-9(94.45mm,96.85mm) on Multi-Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.096mm] / [Board Layer Stack Bottom Coverlay] Mask Sliver [0.096mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9650.95mil|Location2.X=9671.885mil|Location1.Y=4566.304mil|Location2.Y=4587.239mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9650.95mil|Location2.X=9671.885mil|Location1.Y=4566.304mil|Location2.Y=4587.239mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.3mm &lt; 0.5mm) Between Pad R16-(17.5mm,42mm) on Bottom Layer And Pad R16-(17.5mm,43.5mm) on Bottom Layer [Board Layer Stack Bottom Coverlay] Mask Sliver [0.3mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11606.17mil|Location2.X=11627.105mil|Location1.Y=4757.728mil|Location2.Y=4778.663mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11606.17mil|Location2.X=11627.105mil|Location1.Y=4757.728mil|Location2.Y=4778.663mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.25mm &lt; 0.5mm) Between Pad U10-1(66.163mm,47.212mm) on Top Layer And Pad U10-2(66.963mm,47.212mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11606.17mil|Location2.X=11627.105mil|Location1.Y=4812.846mil|Location2.Y=4833.781mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11606.17mil|Location2.X=11627.105mil|Location1.Y=4812.846mil|Location2.Y=4833.781mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.25mm &lt; 0.5mm) Between Pad U10-3(66.963mm,48.612mm) on Top Layer And Pad U10-4(66.163mm,48.612mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12107.863mil|Location2.X=12128.798mil|Location1.Y=3913.328mil|Location2.Y=3934.263mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12107.863mil|Location2.X=12128.798mil|Location1.Y=3913.328mil|Location2.Y=3934.263mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U1-1(79.856mm,26.489mm) on Top Layer And Pad U1-2(79.856mm,25.839mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12107.863mil|Location2.X=12128.798mil|Location1.Y=3887.737mil|Location2.Y=3908.672mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12107.863mil|Location2.X=12128.798mil|Location1.Y=3887.737mil|Location2.Y=3908.672mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U1-2(79.856mm,25.839mm) on Top Layer And Pad U1-3(79.856mm,25.189mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12107.863mil|Location2.X=12128.798mil|Location1.Y=3862.147mil|Location2.Y=3883.082mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12107.863mil|Location2.X=12128.798mil|Location1.Y=3862.147mil|Location2.Y=3883.082mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U1-3(79.856mm,25.189mm) on Top Layer And Pad U1-4(79.856mm,24.539mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12217.705mil|Location2.X=12238.64mil|Location1.Y=3862.147mil|Location2.Y=3883.082mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12217.705mil|Location2.X=12238.64mil|Location1.Y=3862.147mil|Location2.Y=3883.082mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U1-5(82.646mm,24.539mm) on Top Layer And Pad U1-6(82.646mm,25.189mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12217.705mil|Location2.X=12238.64mil|Location1.Y=3887.737mil|Location2.Y=3908.672mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12217.705mil|Location2.X=12238.64mil|Location1.Y=3887.737mil|Location2.Y=3908.672mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U1-6(82.646mm,25.189mm) on Top Layer And Pad U1-7(82.646mm,25.839mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12217.705mil|Location2.X=12238.64mil|Location1.Y=3913.328mil|Location2.Y=3934.263mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12217.705mil|Location2.X=12238.64mil|Location1.Y=3913.328mil|Location2.Y=3934.263mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U1-7(82.646mm,25.839mm) on Top Layer And Pad U1-8(82.646mm,26.489mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12226.957mil|Location2.X=12247.892mil|Location1.Y=4629.296mil|Location2.Y=4650.231mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12226.957mil|Location2.X=12247.892mil|Location1.Y=4629.296mil|Location2.Y=4650.231mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U5-1(81.706mm,44.025mm) on Top Layer And Pad U5-2(81.706mm,44.675mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12081.288mil|Location2.X=12102.223mil|Location1.Y=4654.887mil|Location2.Y=4675.822mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12081.288mil|Location2.X=12102.223mil|Location1.Y=4654.887mil|Location2.Y=4675.822mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U5-10(78.006mm,45.325mm) on Top Layer And Pad U5-11(78.006mm,44.675mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12081.288mil|Location2.X=12102.223mil|Location1.Y=4680.477mil|Location2.Y=4701.412mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12081.288mil|Location2.X=12102.223mil|Location1.Y=4680.477mil|Location2.Y=4701.412mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U5-10(78.006mm,45.325mm) on Top Layer And Pad U5-9(78.006mm,45.975mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12081.288mil|Location2.X=12102.223mil|Location1.Y=4629.296mil|Location2.Y=4650.231mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12081.288mil|Location2.X=12102.223mil|Location1.Y=4629.296mil|Location2.Y=4650.231mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U5-11(78.006mm,44.675mm) on Top Layer And Pad U5-12(78.006mm,44.025mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12103.926mil|Location2.X=12124.861mil|Location1.Y=4606.658mil|Location2.Y=4627.593mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12103.926mil|Location2.X=12124.861mil|Location1.Y=4606.658mil|Location2.Y=4627.593mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U5-13(78.881mm,43.15mm) on Top Layer And Pad U5-14(79.531mm,43.15mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12129.516mil|Location2.X=12150.451mil|Location1.Y=4606.658mil|Location2.Y=4627.593mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12129.516mil|Location2.X=12150.451mil|Location1.Y=4606.658mil|Location2.Y=4627.593mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U5-14(79.531mm,43.15mm) on Top Layer And Pad U5-15(80.181mm,43.15mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12155.107mil|Location2.X=12176.042mil|Location1.Y=4606.658mil|Location2.Y=4627.593mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12155.107mil|Location2.X=12176.042mil|Location1.Y=4606.658mil|Location2.Y=4627.593mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U5-15(80.181mm,43.15mm) on Top Layer And Pad U5-16(80.831mm,43.15mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12226.957mil|Location2.X=12247.892mil|Location1.Y=4654.887mil|Location2.Y=4675.822mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12226.957mil|Location2.X=12247.892mil|Location1.Y=4654.887mil|Location2.Y=4675.822mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U5-2(81.706mm,44.675mm) on Top Layer And Pad U5-3(81.706mm,45.325mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12226.957mil|Location2.X=12247.892mil|Location1.Y=4680.477mil|Location2.Y=4701.412mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12226.957mil|Location2.X=12247.892mil|Location1.Y=4680.477mil|Location2.Y=4701.412mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U5-3(81.706mm,45.325mm) on Top Layer And Pad U5-4(81.706mm,45.975mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12155.107mil|Location2.X=12176.042mil|Location1.Y=4752.328mil|Location2.Y=4773.263mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12155.107mil|Location2.X=12176.042mil|Location1.Y=4752.328mil|Location2.Y=4773.263mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U5-5(80.831mm,46.85mm) on Top Layer And Pad U5-6(80.181mm,46.85mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12129.516mil|Location2.X=12150.451mil|Location1.Y=4752.328mil|Location2.Y=4773.263mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12129.516mil|Location2.X=12150.451mil|Location1.Y=4752.328mil|Location2.Y=4773.263mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U5-6(80.181mm,46.85mm) on Top Layer And Pad U5-7(79.531mm,46.85mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12103.926mil|Location2.X=12124.861mil|Location1.Y=4752.328mil|Location2.Y=4773.263mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12103.926mil|Location2.X=12124.861mil|Location1.Y=4752.328mil|Location2.Y=4773.263mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U5-7(79.531mm,46.85mm) on Top Layer And Pad U5-8(78.881mm,46.85mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11399.317mil|Location2.X=11420.252mil|Location1.Y=3294.87mil|Location2.Y=3315.805mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11399.317mil|Location2.X=11420.252mil|Location1.Y=3294.87mil|Location2.Y=3315.805mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.5mm) Between Pad U6-1(61.834mm,10.781mm) on Top Layer And Pad U6-2(61.834mm,10.131mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11399.317mil|Location2.X=11420.252mil|Location1.Y=3269.28mil|Location2.Y=3290.215mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11399.317mil|Location2.X=11420.252mil|Location1.Y=3269.28mil|Location2.Y=3290.215mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.5mm) Between Pad U6-2(61.834mm,10.131mm) on Top Layer And Pad U6-3(61.834mm,9.481mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11606.17mil|Location2.X=11627.105mil|Location1.Y=5215.969mil|Location2.Y=5236.904mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11606.17mil|Location2.X=11627.105mil|Location1.Y=5215.969mil|Location2.Y=5236.904mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.25mm &lt; 0.5mm) Between Pad U8-1(66.963mm,59.651mm) on Top Layer And Pad U8-2(66.163mm,59.651mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11606.17mil|Location2.X=11627.105mil|Location1.Y=5160.851mil|Location2.Y=5181.786mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11606.17mil|Location2.X=11627.105mil|Location1.Y=5160.851mil|Location2.Y=5181.786mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.25mm &lt; 0.5mm) Between Pad U8-3(66.163mm,58.251mm) on Top Layer And Pad U8-4(66.963mm,58.251mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.25mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11610.91mil|Location2.X=11631.845mil|Location1.Y=4495.923mil|Location2.Y=4516.858mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11610.91mil|Location2.X=11631.845mil|Location1.Y=4495.923mil|Location2.Y=4516.858mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U9-1(66.283mm,40.637mm) on Top Layer And Pad U9-2(66.283mm,41.287mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11610.91mil|Location2.X=11631.845mil|Location1.Y=4521.514mil|Location2.Y=4542.449mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11610.91mil|Location2.X=11631.845mil|Location1.Y=4521.514mil|Location2.Y=4542.449mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U9-2(66.283mm,41.287mm) on Top Layer And Pad U9-3(66.283mm,41.937mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11579.414mil|Location2.X=11600.349mil|Location1.Y=4547.104mil|Location2.Y=4568.039mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11579.414mil|Location2.X=11600.349mil|Location1.Y=4547.104mil|Location2.Y=4568.039mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U9-3(66.283mm,41.937mm) on Top Layer And Pad U9-4(66.283mm,42.587mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11660.122mil|Location2.X=11681.057mil|Location1.Y=4547.104mil|Location2.Y=4568.039mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11660.122mil|Location2.X=11681.057mil|Location1.Y=4547.104mil|Location2.Y=4568.039mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U9-5(68.333mm,42.587mm) on Top Layer And Pad U9-6(68.333mm,41.937mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11691.618mil|Location2.X=11712.553mil|Location1.Y=4521.514mil|Location2.Y=4542.449mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11691.618mil|Location2.X=11712.553mil|Location1.Y=4521.514mil|Location2.Y=4542.449mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U9-6(68.333mm,41.937mm) on Top Layer And Pad U9-7(68.333mm,41.287mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11691.618mil|Location2.X=11712.553mil|Location1.Y=4495.923mil|Location2.Y=4516.858mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11691.618mil|Location2.X=11712.553mil|Location1.Y=4495.923mil|Location2.Y=4516.858mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.1mm &lt; 0.5mm) Between Pad U9-7(68.333mm,41.287mm) on Top Layer And Pad U9-8(68.333mm,40.637mm) on Top Layer [Board Layer Stack Top Coverlay] Mask Sliver [0.1mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDP4YQJYT4UOZXEM14440ACRT10CLGK2DZHWIO1EXV30G2H3S52MD"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Net Antennae (Tolerance=0mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9666.776mil|Location2.X=9711.62mil|Location1.Y=4528.98mil|Location2.Y=4598.59mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9666.776mil|Location2.X=9711.62mil|Location1.Y=4528.98mil|Location2.Y=4598.59mil|Absolute=True">Net Antennae: Track (17.5mm,42mm)(24mm,42mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9351.815mil|Location2.X=9396.659mil|Location1.Y=4647.091mil|Location2.Y=4716.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9351.815mil|Location2.X=9396.659mil|Location1.Y=4647.091mil|Location2.Y=4716.701mil|Absolute=True">Net Antennae: Track (9.5mm,45mm)(16mm,45mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDRPXJKYDYRJXKCUPXARWFMKO2JK2UIJQ35EFLVDPGHJ5TFWSJGCCH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Board Clearance Constraint (Gap=0mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12809.906mil|Location2.X=12824.002mil|Location1.Y=6740.08mil|Location2.Y=6754.069mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12809.906mil|Location2.X=12824.002mil|Location1.Y=6740.08mil|Location2.Y=6754.069mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.106mm &lt; 0.3mm) Between Board Edge And Pad HDR1-1(96.85mm,96.85mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12694.257mil|Location2.X=12707.318mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12694.257mil|Location2.X=12707.318mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.15mm &lt; 0.3mm) Between Board Edge And Pad HDR1-10(94.15mm,96.85mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12690.32mil|Location2.X=12703.381mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12690.32mil|Location2.X=12703.381mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.15mm &lt; 0.3mm) Between Board Edge And Pad HDR1-11(93.85mm,96.85mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12670.635mil|Location2.X=12683.696mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12670.635mil|Location2.X=12683.696mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.15mm &lt; 0.3mm) Between Board Edge And Pad HDR1-12(93.55mm,96.85mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12666.698mil|Location2.X=12679.759mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12666.698mil|Location2.X=12679.759mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.15mm &lt; 0.3mm) Between Board Edge And Pad HDR1-13(93.25mm,96.85mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12647.013mil|Location2.X=12660.074mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12647.013mil|Location2.X=12660.074mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.15mm &lt; 0.3mm) Between Board Edge And Pad HDR1-14(92.95mm,96.85mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12629.789mil|Location2.X=12643.785mil|Location1.Y=6741.01mil|Location2.Y=6755.099mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12629.789mil|Location2.X=12643.785mil|Location1.Y=6741.01mil|Location2.Y=6755.099mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.106mm &lt; 0.3mm) Between Board Edge And Pad HDR1-15(92.65mm,96.85mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12788.745mil|Location2.X=12801.806mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12788.745mil|Location2.X=12801.806mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.15mm &lt; 0.3mm) Between Board Edge And Pad HDR1-2(96.55mm,96.85mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12784.808mil|Location2.X=12797.869mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12784.808mil|Location2.X=12797.869mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.15mm &lt; 0.3mm) Between Board Edge And Pad HDR1-3(96.25mm,96.85mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12765.123mil|Location2.X=12778.184mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12765.123mil|Location2.X=12778.184mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.15mm &lt; 0.3mm) Between Board Edge And Pad HDR1-4(95.95mm,96.85mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12761.186mil|Location2.X=12774.247mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12761.186mil|Location2.X=12774.247mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.15mm &lt; 0.3mm) Between Board Edge And Pad HDR1-5(95.65mm,96.85mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12741.501mil|Location2.X=12754.562mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12741.501mil|Location2.X=12754.562mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.15mm &lt; 0.3mm) Between Board Edge And Pad HDR1-6(95.35mm,96.85mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12737.564mil|Location2.X=12750.625mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12737.564mil|Location2.X=12750.625mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.15mm &lt; 0.3mm) Between Board Edge And Pad HDR1-7(95.05mm,96.85mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12721.816mil|Location2.X=12734.877mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12721.816mil|Location2.X=12734.877mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.15mm &lt; 0.3mm) Between Board Edge And Pad HDR1-8(94.75mm,96.85mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12713.942mil|Location2.X=12727.003mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12713.942mil|Location2.X=12727.003mil|Location1.Y=6742.485mil|Location2.Y=6755.546mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.15mm &lt; 0.3mm) Between Board Edge And Pad HDR1-9(94.45mm,96.85mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDX2FDXFIOGOFDB0EP0WHH1C15QCS0V5BALX01IAJF0ELKOK5QK3UL"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic'))</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11559.056mil|Location1.Y=0mil|Location2.Y=5456.693mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11559.056mil|Location1.Y=0mil|Location2.Y=5456.693mil|Absolute=True">Room Definition: Between Component R16-HeaterWire_1 (9.5mm,48.5mm) on Top Layer And Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11658.96mil|Location1.Y=0mil|Location2.Y=4823.314mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11658.96mil|Location1.Y=0mil|Location2.Y=4823.314mil|Absolute=True">Room Definition: Between Component U10-SHT45-AD1F (66.563mm,47.912mm) on Top Layer And Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12278.763mil|Location1.Y=0mil|Location2.Y=3970.055mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12278.763mil|Location1.Y=0mil|Location2.Y=3970.055mil|Absolute=True">Room Definition: Between Component U1-TPS78433 (81.251mm,25.514mm) on Top Layer And Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11546.595mil|Location1.Y=0mil|Location2.Y=3357.503mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11546.595mil|Location1.Y=0mil|Location2.Y=3357.503mil|Absolute=True">Room Definition: Between Component U6-SN74LVC1G14 (62.959mm,10.131mm) on Top Layer And Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11658.96mil|Location1.Y=0mil|Location2.Y=5265.807mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11658.96mil|Location1.Y=0mil|Location2.Y=5265.807mil|Absolute=True">Room Definition: Between Component U8-SHT45-AD1F (66.563mm,58.951mm) on Top Layer And Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12246.263mil|Location1.Y=0mil|Location2.Y=4769.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12246.263mil|Location1.Y=0mil|Location2.Y=4769.685mil|Absolute=True">Room Definition: Between LCC Component U5-PCA9546ARGVR (79.856mm,45mm) on Top Layer And Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12821.063mil|Location1.Y=0mil|Location2.Y=6750mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12821.063mil|Location1.Y=0mil|Location2.Y=6750mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SIP Component HDR1-Dual Row 15Pos FPC Contacts (96.85mm,95.85mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11321.929mil|Location1.Y=0mil|Location2.Y=3404.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11321.929mil|Location1.Y=0mil|Location2.Y=3404.213mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT SIP Component HDR2-TSM-120-01-T-SH (56.41mm,10.3mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=10717.352mil|Location1.Y=0mil|Location2.Y=4328.207mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=10717.352mil|Location1.Y=0mil|Location2.Y=4328.207mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component C10-10nF (43.146mm,35.461mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=10715.551mil|Location1.Y=0mil|Location2.Y=5410.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=10715.551mil|Location1.Y=0mil|Location2.Y=5410.433mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component C1-10nF (43.1mm,62.95mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11741.95mil|Location1.Y=0mil|Location2.Y=3416.693mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11741.95mil|Location1.Y=0mil|Location2.Y=3416.693mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component C11-10nF (68.959mm,11.862mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11538.189mil|Location1.Y=0mil|Location2.Y=4554.921mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11538.189mil|Location1.Y=0mil|Location2.Y=4554.921mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component C12-Capacitor_InterdigitatedFingers (25.5mm,25mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11684.968mil|Location1.Y=0mil|Location2.Y=5161.309mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11684.968mil|Location1.Y=0mil|Location2.Y=5161.309mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component C13-100nF (66.876mm,56.81mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11701.968mil|Location1.Y=0mil|Location2.Y=4461.932mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11701.968mil|Location1.Y=0mil|Location2.Y=4461.932mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component C14-100nF (67.308mm,39.058mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11684.968mil|Location1.Y=0mil|Location2.Y=4895.315mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11684.968mil|Location1.Y=0mil|Location2.Y=4895.315mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component C15-100nF (66.876mm,50.066mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12274.677mil|Location1.Y=0mil|Location2.Y=4060.774mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12274.677mil|Location1.Y=0mil|Location2.Y=4060.774mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component C2-1uF (81.474mm,28.619mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12098.281mil|Location1.Y=0mil|Location2.Y=3969.189mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12098.281mil|Location1.Y=0mil|Location2.Y=3969.189mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component C3-1uF (77.771mm,25.514mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=10717.352mil|Location1.Y=0mil|Location2.Y=5065.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=10717.352mil|Location1.Y=0mil|Location2.Y=5065.945mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component C4-10nF (43.146mm,54.2mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12212.542mil|Location1.Y=0mil|Location2.Y=4477.195mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12212.542mil|Location1.Y=0mil|Location2.Y=4477.195mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component C5-1uF (79.896mm,39.196mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12194.747mil|Location1.Y=0mil|Location2.Y=4540.354mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12194.747mil|Location1.Y=0mil|Location2.Y=4540.354mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component C6-10nF (80.272mm,41.25mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=10717.352mil|Location1.Y=0mil|Location2.Y=4721.457mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=10717.352mil|Location1.Y=0mil|Location2.Y=4721.457mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component C7-10nF (43.146mm,45.45mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11545.729mil|Location1.Y=0mil|Location2.Y=3519.728mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11545.729mil|Location1.Y=0mil|Location2.Y=3519.728mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component C8-1uF (62.959mm,14.876mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11530.729mil|Location1.Y=0mil|Location2.Y=3429.01mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11530.729mil|Location1.Y=0mil|Location2.Y=3429.01mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component C9-10nF (62.959mm,12.822mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11685.039mil|Location1.Y=0mil|Location2.Y=6307.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11685.039mil|Location1.Y=0mil|Location2.Y=6307.37mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component Credit-Credits (43.2mm,80.5mm) on Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11349.764mil|Location1.Y=0mil|Location2.Y=3494.931mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11349.764mil|Location1.Y=0mil|Location2.Y=3494.931mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component J4-S1751-46 TestPoint (57.959mm,14.246mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11743.445mil|Location1.Y=0mil|Location2.Y=3283.508mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11743.445mil|Location1.Y=0mil|Location2.Y=3283.508mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component J5-S1751-46 TestPoint (67.959mm,8.876mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11530.729mil|Location1.Y=0mil|Location2.Y=3212.642mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11530.729mil|Location1.Y=0mil|Location2.Y=3212.642mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component R10-10K (62.959mm,7.376mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11878.937mil|Location1.Y=0mil|Location2.Y=4327.638mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11878.937mil|Location1.Y=0mil|Location2.Y=4327.638mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component R11-3K3 (72.5mm,35mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11800.197mil|Location1.Y=0mil|Location2.Y=4327.638mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11800.197mil|Location1.Y=0mil|Location2.Y=4327.638mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component R12-3K3 (70.5mm,35mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11660.768mil|Location1.Y=0mil|Location2.Y=3417.248mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11660.768mil|Location1.Y=0mil|Location2.Y=3417.248mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component R13-10K (66.959mm,11.876mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11878.937mil|Location1.Y=0mil|Location2.Y=5410.315mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11878.937mil|Location1.Y=0mil|Location2.Y=5410.315mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component R1-3K3 (72.5mm,62.5mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12242.307mil|Location1.Y=0mil|Location2.Y=4890.748mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12242.307mil|Location1.Y=0mil|Location2.Y=4890.748mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component R14-0 (81.033mm,50mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12208.763mil|Location1.Y=0mil|Location2.Y=4969.488mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12208.763mil|Location1.Y=0mil|Location2.Y=4969.488mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component R15-0 (80.181mm,52mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11800.197mil|Location1.Y=0mil|Location2.Y=5410.315mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11800.197mil|Location1.Y=0mil|Location2.Y=5410.315mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component R2-3K3 (70.5mm,62.5mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11878.937mil|Location1.Y=0mil|Location2.Y=5065.827mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11878.937mil|Location1.Y=0mil|Location2.Y=5065.827mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component R3-3K3 (72.5mm,53.75mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11800.197mil|Location1.Y=0mil|Location2.Y=5065.827mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11800.197mil|Location1.Y=0mil|Location2.Y=5065.827mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component R4-3K3 (70.5mm,53.75mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11985.118mil|Location1.Y=0mil|Location2.Y=4123.032mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11985.118mil|Location1.Y=0mil|Location2.Y=4123.032mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component R5-3K3 (74.5mm,30.5mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12004.803mil|Location1.Y=0mil|Location2.Y=4044.291mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12004.803mil|Location1.Y=0mil|Location2.Y=4044.291mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component R6-3K3 (75mm,28.5mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12279.639mil|Location1.Y=0mil|Location2.Y=4551.014mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=12279.639mil|Location1.Y=0mil|Location2.Y=4551.014mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component R7-10K (82.678mm,40.674mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11878.937mil|Location1.Y=0mil|Location2.Y=4721.339mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11878.937mil|Location1.Y=0mil|Location2.Y=4721.339mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component R8-3K3 (72.5mm,45mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11800.197mil|Location1.Y=0mil|Location2.Y=4721.338mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11800.197mil|Location1.Y=0mil|Location2.Y=4721.338mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SMT Small Component R9-3K3 (70.5mm,45mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=10808.071mil|Location1.Y=0mil|Location2.Y=5393.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=10808.071mil|Location1.Y=0mil|Location2.Y=5393.701mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SOIC Component U2-AS6221 (45mm,62.7mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=10808.071mil|Location1.Y=0mil|Location2.Y=5049.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=10808.071mil|Location1.Y=0mil|Location2.Y=5049.213mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SOIC Component U3-AS6221 (45mm,53.95mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=10808.338mil|Location1.Y=0mil|Location2.Y=4704.724mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=10808.338mil|Location1.Y=0mil|Location2.Y=4704.724mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SOIC Component U4-AS6221 (45.007mm,45.2mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=10808.338mil|Location1.Y=0mil|Location2.Y=4311.024mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=10808.338mil|Location1.Y=0mil|Location2.Y=4311.024mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SOIC Component U7-AS6221 (45.007mm,35.2mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11706.023mil|Location1.Y=0mil|Location2.Y=4592.02mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=11706.023mil|Location1.Y=0mil|Location2.Y=4592.02mil|Absolute=True">Room Definition: Between Room Mirror_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Mirror_Schematic')) And SOIC Component U9-BME280_I2C (67.308mm,41.612mm) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDLTQOG4E32P4VDIUDV4P1JDUOCNQRKKLL0LJOZEL14YET311XSS2C"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Component Clearance Constraint ( Horizontal Gap = 0.254mm, Vertical Gap = 0.254mm ) (All),(All) </th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10677.102mil|Location2.X=10684.768mil|Location1.Y=4307.642mil|Location2.Y=4315.308mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10677.102mil|Location2.X=10684.768mil|Location1.Y=4307.642mil|Location2.Y=4315.308mil|Absolute=True">Component Clearance Constraint: (Collision &lt; 0.254mm) Between Component R16-HeaterWire_1 (9.5mm,48.5mm) on Top Layer And SMT Small Component C10-10nF (43.146mm,35.461mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10702.86mil|Location2.X=10710.526mil|Location1.Y=5356.403mil|Location2.Y=5364.069mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10702.86mil|Location2.X=10710.526mil|Location1.Y=5356.403mil|Location2.Y=5364.069mil|Absolute=True">Component Clearance Constraint: (Collision &lt; 0.254mm) Between Component R16-HeaterWire_1 (9.5mm,48.5mm) on Top Layer And SMT Small Component C1-10nF (43.1mm,62.95mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10267.058mil|Location2.X=10274.724mil|Location1.Y=4551.088mil|Location2.Y=4558.755mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10267.058mil|Location2.X=10274.724mil|Location1.Y=4551.088mil|Location2.Y=4558.755mil|Absolute=True">Component Clearance Constraint: (Collision &lt; 0.254mm) Between Component R16-HeaterWire_1 (9.5mm,48.5mm) on Top Layer And SMT Small Component C12-Capacitor_InterdigitatedFingers (25.5mm,25mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10704.661mil|Location2.X=10712.327mil|Location1.Y=5011.915mil|Location2.Y=5019.581mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10704.661mil|Location2.X=10712.327mil|Location1.Y=5011.915mil|Location2.Y=5019.581mil|Absolute=True">Component Clearance Constraint: (Collision &lt; 0.254mm) Between Component R16-HeaterWire_1 (9.5mm,48.5mm) on Top Layer And SMT Small Component C4-10nF (43.146mm,54.2mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10704.661mil|Location2.X=10712.327mil|Location1.Y=4667.426mil|Location2.Y=4675.093mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10704.661mil|Location2.X=10712.327mil|Location1.Y=4667.426mil|Location2.Y=4675.093mil|Absolute=True">Component Clearance Constraint: (Collision &lt; 0.254mm) Between Component R16-HeaterWire_1 (9.5mm,48.5mm) on Top Layer And SMT Small Component C7-10nF (43.146mm,45.45mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10793.411mil|Location2.X=10801.078mil|Location1.Y=5378.647mil|Location2.Y=5386.314mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10793.411mil|Location2.X=10801.078mil|Location1.Y=5378.647mil|Location2.Y=5386.314mil|Absolute=True">Component Clearance Constraint: (Collision &lt; 0.254mm) Between Component R16-HeaterWire_1 (9.5mm,48.5mm) on Top Layer And SOIC Component U2-AS6221 (45mm,62.7mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10793.411mil|Location2.X=10801.078mil|Location1.Y=5034.159mil|Location2.Y=5041.825mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10793.411mil|Location2.X=10801.078mil|Location1.Y=5034.159mil|Location2.Y=5041.825mil|Absolute=True">Component Clearance Constraint: (Collision &lt; 0.254mm) Between Component R16-HeaterWire_1 (9.5mm,48.5mm) on Top Layer And SOIC Component U3-AS6221 (45mm,53.95mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10793.678mil|Location2.X=10801.345mil|Location1.Y=4689.671mil|Location2.Y=4697.337mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10793.678mil|Location2.X=10801.345mil|Location1.Y=4689.671mil|Location2.Y=4697.337mil|Absolute=True">Component Clearance Constraint: (Collision &lt; 0.254mm) Between Component R16-HeaterWire_1 (9.5mm,48.5mm) on Top Layer And SOIC Component U4-AS6221 (45.007mm,45.2mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10734.623mil|Location2.X=10742.29mil|Location1.Y=4295.97mil|Location2.Y=4303.636mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10734.623mil|Location2.X=10742.29mil|Location1.Y=4295.97mil|Location2.Y=4303.636mil|Absolute=True">Component Clearance Constraint: (Collision &lt; 0.254mm) Between Component R16-HeaterWire_1 (9.5mm,48.5mm) on Top Layer And SOIC Component U7-AS6221 (45.007mm,35.2mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10704.661mil|Location2.X=10712.327mil|Location1.Y=4274.177mil|Location2.Y=4281.843mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10704.661mil|Location2.X=10712.327mil|Location1.Y=4274.177mil|Location2.Y=4281.843mil|Absolute=True">Component Clearance Constraint: (Collision &lt; 0.254mm) Between SMT Small Component C10-10nF (43.146mm,35.461mm) on Top Layer And SMT Small Component C12-Capacitor_InterdigitatedFingers (25.5mm,25mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10793.678mil|Location2.X=10801.345mil|Location1.Y=4295.97mil|Location2.Y=4303.636mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\HumidityBoards2\MirrorPCB\Mirror_PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10793.678mil|Location2.X=10801.345mil|Location1.Y=4295.97mil|Location2.Y=4303.636mil|Absolute=True">Component Clearance Constraint: (Collision &lt; 0.254mm) Between SMT Small Component C12-Capacitor_InterdigitatedFingers (25.5mm,25mm) on Top Layer And SOIC Component U7-AS6221 (45.007mm,35.2mm) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

@@ -1,0 +1,8 @@
+[ProjectGroup]
+Version=1.0
+[Project1]
+ProjectPath=Boards\Boards.PrjMbd
+[Project2]
+ProjectPath=MirrorPCB\MirrorPCB.PrjPcb
+[Project3]
+ProjectPath=BasePCB\BasePCB.PrjPcb

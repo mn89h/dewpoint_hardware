@@ -1,0 +1,22 @@
+------------------------------------------------------------------------------------------
+Gerber File Extension Report For: Mirror_PCB1.GBR   17.01.2024  23:00:38
+------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------
+Layer Extension     Layer Description                      
+------------------------------------------------------------------------------------------
+.gbr                Top Layer                               
+.gbr                Bottom Layer                            
+.gbr                Top Overlay                             
+.gbr                Bottom Overlay                          
+.gbr                Board Layer Stack Top Coverlay          
+.gbr                Board Layer Stack Bottom Coverlay       
+.gbr                Top Paste                               
+.gbr                Top Tenting                             
+.gbr                Bottom Tenting                          
+.gbr                Fab Notes                               
+.gbr                Profile                                 
+.gbr                Non-plated through-hole drill file      
+.gbr                Plated through-hole drill file          
+------------------------------------------------------------------------------------------
